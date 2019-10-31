@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 30-10-2019 a las 22:41:24
+-- Tiempo de generación: 31-10-2019 a las 01:56:11
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.2.18
 
@@ -61,24 +61,26 @@ INSERT INTO `cultivo` (`codigo_cultivo`, `codigo_empleado`, `codigo_planta`, `ca
 DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE IF NOT EXISTS `empleado` (
   `codigo_empleado` int(11) NOT NULL AUTO_INCREMENT,
-  `cedula` int(11) NOT NULL DEFAULT '0',
+  `cedula` int(11) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `apellido1` varchar(25) NOT NULL,
   `apellido2` varchar(25) NOT NULL,
-  `telefono` varchar(25) NOT NULL,
-  `eliminar` int(11) NOT NULL DEFAULT '0',
+  `telefono` int(11) NOT NULL,
+  `eliminar` int(11) NOT NULL,
   PRIMARY KEY (`codigo_empleado`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `empleado`
 --
 
 INSERT INTO `empleado` (`codigo_empleado`, `cedula`, `nombre`, `apellido1`, `apellido2`, `telefono`, `eliminar`) VALUES
-(2, 1088, 'anderson', 'gomez', 'gomez', '310', 0),
-(3, 1089, 'sebastian', 'londonho', 'lopez', '317', 0),
-(4, 2088, 'santiago', 'gomez', 'gomez', '304', 1),
-(5, 2089, 'nelly', 'cardona', 'perez', '311', 0);
+(2, 1088, 'anderson', 'gomez', 'gomez', 310, 0),
+(3, 1089, 'sebastian', 'londonho', 'lopez', 317, 0),
+(4, 2088, 'santiago', 'gomez', 'gomez', 304, 0),
+(5, 2089, 'nelly', 'cardona', 'perez', 311, 0),
+(6, 10195, 'santiago', 'gomez', 'zapata', 311358, 0),
+(7, 42015, 'Ana', 'Gomez', 'Henao', 59623, 0);
 
 -- --------------------------------------------------------
 
