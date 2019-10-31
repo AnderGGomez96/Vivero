@@ -32,8 +32,8 @@
 					?>
 			</table>
 			<input type="button" name="insert" value="Insertar" onclick="window.location.href='insertar_empleado.html'">
-			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='seleccionar_empleado.php'">
-			<input type="button" name="update" value="Actualizar" onclick="window.location.href='actualizar_empleado.php'">
+			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='seleccionar_empleado_eliminar.php'">
+			<input type="button" name="update" value="Actualizar" onclick="window.location.href='seleccionar_empleadoA.php'">
 			<input type="button" name="volver" value="Volver" onclick="window.location.href='index.php'">
 		</div>
 	</body>

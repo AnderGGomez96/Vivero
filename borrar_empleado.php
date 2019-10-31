@@ -6,12 +6,13 @@
 <body>
 	<?php
 	require('conexion.php');
-	$borrar=$_POST['borrar'];
 	if (empty($borrar))
 	{
 		echo "No se selecciono ninguna opcion";
+		/*Boton*/
 	}else
 	{
+		$borrar=$_POST['borrar'];
 		$nFilas=count($borrar);
 		for ($i=0; $i<$nFilas ; $i++) { 
 			$instruccion="UPDATE empleado SET eliminar=1 WHERE codigo_empleado=$borrar[$i]";
