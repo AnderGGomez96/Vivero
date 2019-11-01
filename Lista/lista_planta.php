@@ -13,6 +13,7 @@
 					<td><label>Genero</label></td>
 					<td><label>Familia</label></td>
 					<td><label>Tipo de planta</label></td>
+					<td><label>Cantidad semilla</label></td>
 					<td><label>Cantidad flores</label></td>
 					<td><label>Precio venta</label></td>
 
@@ -23,7 +24,8 @@
 						$resultado=mysqli_query($link,$query);
 
 						while ($extraido= mysqli_fetch_array($resultado)) {
-							echo "<tr align='center'><td>".$extraido['nombre']."</td>";
+							echo "<tr align='center'><td>".$extraido['codigo_planta']."</td>";
+							echo "<td>".$extraido['nombre']."</td>";
 							echo "<td>".$extraido['genero']."</td>";
 							echo "<td>".$extraido['familia']."</td>";
 							echo "<td>".$extraido['tipo_planta']."</td>";
@@ -35,7 +37,8 @@
 			</table>
 			<input type="button" name="insert" value="Insertar" onclick="window.location.href='insertar_alumnos.php'">
 			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='borrar_alumnos.php'">
-			<input type="button" name="volver" value="Volver" onclick="window.location.href='index.php'">
+			<input type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_planta.php'">
+			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
 		</div>
 	</body>
 </html>

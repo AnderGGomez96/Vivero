@@ -42,7 +42,7 @@
 			echo "<p>crecimiento cultivo vacio ó no valido</p>";
 			$error=true;
 		}
-		if (empty($muerte) || !is_numeric($muerte)) {
+		if (empty($muerte)) {
 			echo "<p>muerte cultivo vacio ó no valido</p>";
 			$error=true;
 		}
@@ -52,14 +52,34 @@
 		}else
 		{
 			require('../conexion.php');
+			$validar="SELECT cantidad_semilla FROM planta WHERE codigo_planta=$codigo_planta";
+			$resultado= mysqli_query($link,$validar);
+			$extraido=mysqli_fetch_array($resultado);
+			if ($cantidad_cultivo > $extraido['cantidad_semilla'])
+			{
+				echo "<p>La cantidad de unidades de la planta es mayor a la disponible de semillas : $extraido[cantidad_semilla]</p>";
+				echo"<p><button onclick=location.href='actualizar_cultivo.php'>Pagina anterior</button></p>";
+			}else
+			{
+				if ($muerte==2) {
+					$muerte=0;
+				}
+				$sql="UPDATE cultivo SET codigo_empleado=$codigo_empleado, codigo_planta=$codigo_planta,cantidad_cultivo=$cantidad_cultivo,humedad_cultivo=$humedad_cultivo,edad_cultivo=$edad_cultivo,dias_abono=$dias_abono, crecimiento=$crecimiento, muerte=$muerte WHERE codigo_cultivo=$codigo_cultivo";
 
-			$sql="UPDATE cultivo SET codigo_empleado=$codigo_empleado, codigo_planta=$codigo_planta,cantidad_cultivo=$cantidad_cultivo,humedad_cultivo=$humedad_cultivo,edad_cultivo=$edad_cultivo,dias_abono=$dias_abono, crecimiento=$crecimiento, muerte=$muerte WHERE codigo_cultivo=$codigo_cultivo";
+				if ($link->query($sql) === TRUE) {
+				    echo "<p>Registro actualizado satisfactoriamente</p>";
 
-			if ($link->query($sql) === TRUE) {
-			    echo "<p>Registro actualizado satisfactoriamente</p>";
-			    echo"<p><button onclick=location.href='actualizar_cultivo.php'>Actualice un nuevo empleado</button></p>";
-			} else {
-			    echo "Error: " . $sql . "<br>" . $link->error;
+				    $nuevo=$extraido['cantidad_semilla']-$cantidad_cultivo;
+				    $sql="UPDATE planta SET cantidad_semilla=$nuevo WHERE codigo_planta=$codigo_planta";
+				    if ($link->query($sql) === TRUE)
+				    {
+				    	echo"<p><button onclick=location.href='actualizar_cultivo.php'>Actualice un nuevo cultivo</button></p>";
+				    }else {
+				    echo "Error: " . $sql . "<br>" . $link->error;
+					}
+				} else {
+				    echo "Error: " . $sql . "<br>" . $link->error;
+				}
 			}
 		}
 	}
@@ -134,8 +154,8 @@
 			</tr>
 			<tr><td>Muerte:</td>
 				<td><select name="muerte">
-					<option value="0">0</option>
-					<option value="1">1</option>
+					<option value=2>0</option>
+					<option value=1>1</option>
 				</select></td>
 			</tr>
 		</table>
