@@ -37,10 +37,7 @@
 			</table>
 			<input type="button" name="insert" value="Insertar" onclick="window.location.href='insertar_alumnos.php'">
 			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='borrar_alumnos.php'">
-<<<<<<< HEAD
 			<input type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_planta.php'">
-=======
->>>>>>> 95f592e79a660ee2a7f28da1ee7c03276255ee83
 			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
 		</div>
 	</body>
