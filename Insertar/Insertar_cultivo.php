@@ -43,18 +43,44 @@
 		echo "<p>Humedad cultivo vacio ó no valido</p>";
 		$error=true;
 	}
+        if (empty($edadCultivo) || !is_numeric($edadCultivo)) {
+		echo "<p>Edad de cultivo vacio ó no valido</p>";
+		$error=true;
+	}
+        if (empty($diasAbono) || !is_numeric($diasAbono)) {
+		echo "<p>Dias de abono vacio ó no valido</p>";
+		$error=true;
+	}
+        if (empty($crecimiento) || !is_numeric($crecimiento)) {
+		echo "<p>crecimiento cultivo"
+            ."vacio ó no valido</p>";
+		$error=true;
+	}
 	if ($error)
 	{
 		echo"<button onclick=location.href='insertar_empleado.html'>Pagina anterior</button>";
 	}else
 	{
-		require('conexion.php');
-
-		$sql="INSERT INTO empleado (cedula,nombre,apellido1,apellido2,telefono,eliminar) VALUES ($cedula,'$nombre','$apellido1','$apellido2','$telefono',0)";
-
+		require('../conexion.php');
+                $sql = "SELECT `codigo_cultivo` FROM `cultivo` WHERE `codigo_cultivo`=$codCul";
+              
+                if($sql != FALSE){
+                    $sql="UPDATE `cultivo` SET `muerte` = 0,`codigo_empleado` = $codEmp,"
+                            . "`codigo_planta` = $codPlanta,`cantidad_cultivo` = $cantCultivo,"
+                            . "`humedad_cultivo` = $humCultivo,`edad_cultivo` = $edadCultivo,"
+                            . "`dias_abono` = $diasAbono,`crecimiento` = $crecimiento"
+                            . " WHERE `codigo_cultivo` = $codCul";
+                    
+                }else{
+                    $sql="INSERT INTO cultivo (codigo_cultivo,codigo_empleado,"
+                            . "codigo_planta,cantidad_cultivo,humedad_cultivo,edad_cultivo,dias_abono,"
+                            . "crecimiento,muerte)"
+                            . "VALUES ($codCul,$codEmp,$codPlanta,$cantCultivo,$humCultivo,$edadCultivo,"
+                            . "$diasAbono,$crecimiento,0)";
+                }
 		if ($link->query($sql) === TRUE) {
 		    echo "<p>Nuevo registro creado satisfactoriamente</p>";
-		    echo"<p><button onclick=location.href='insertar_empleado.html'>Inserte un nuevo empleado</button></p>";
+		    echo"<p><button onclick=location.href='../Lista/lista_cultivo.php'>Cultivos</button></p>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $link->error;
 		}
