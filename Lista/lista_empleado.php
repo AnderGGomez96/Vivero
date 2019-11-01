@@ -17,7 +17,7 @@
 
 					<?php
 
-						require('conexion.php');
+						require('../conexion.php');
 						$query="SELECT * FROM empleado WHERE eliminar = 0 ORDER BY codigo_empleado";
 						$resultado=mysqli_query($link,$query);
 

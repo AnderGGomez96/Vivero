@@ -14,7 +14,7 @@
 
 					<?php
 
-						require('conexion.php');
+						require('../conexion.php');
 						$query="SELECT * FROM enfermedad WHERE eliminar = 0 ORDER BY codigo_enfermedad";
 						$resultado=mysqli_query($link,$query);
 

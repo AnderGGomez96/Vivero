@@ -13,7 +13,7 @@
 
 					<?php
 
-						require('conexion.php');
+						require('../conexion.php');
 						$query="SELECT * FROM labores WHERE eliminar = 0 ORDER BY codigo_labor";
 						$resultado=mysqli_query($link,$query);
 

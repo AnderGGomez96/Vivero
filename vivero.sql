@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 31-10-2019 a las 01:56:11
+-- Tiempo de generación: 31-10-2019 a las 23:35:17
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.2.18
 
@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `cultivo` (
   `dias_abono` int(11) NOT NULL DEFAULT '0',
   `crecimiento` int(11) NOT NULL DEFAULT '0',
   `muerte` int(11) NOT NULL DEFAULT '0',
+  `termino` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo_cultivo`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
@@ -46,11 +47,11 @@ CREATE TABLE IF NOT EXISTS `cultivo` (
 -- Volcado de datos para la tabla `cultivo`
 --
 
-INSERT INTO `cultivo` (`codigo_cultivo`, `codigo_empleado`, `codigo_planta`, `cantidad_cultivo`, `humedad_cultivo`, `edad_cultivo`, `dias_abono`, `crecimiento`, `muerte`) VALUES
-(1, 2, 3, 12, 10, 2, 0, 30, 0),
-(2, 4, 5, 17, 7, 7, 1, 1, 0),
-(3, 3, 9, 20, 8, 15, 6, 14, 0),
-(4, 5, 8, 14, 11, 6, 1, 12, 1);
+INSERT INTO `cultivo` (`codigo_cultivo`, `codigo_empleado`, `codigo_planta`, `cantidad_cultivo`, `humedad_cultivo`, `edad_cultivo`, `dias_abono`, `crecimiento`, `muerte`, `termino`) VALUES
+(1, 2, 3, 12, 10, 2, 0, 30, 0, 0),
+(2, 4, 5, 17, 7, 7, 1, 1, 0, 0),
+(3, 3, 9, 20, 8, 15, 6, 14, 0, 0),
+(4, 5, 8, 14, 11, 6, 1, 12, 1, 0);
 
 -- --------------------------------------------------------
 

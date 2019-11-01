@@ -14,7 +14,7 @@
 
 					<?php
 
-						require('conexion.php');
+						require('../conexion.php');
 						$query="SELECT * FROM infeccion WHERE eliminar = 0 ORDER BY codigo_infeccion";
 						$resultado=mysqli_query($link,$query);
 

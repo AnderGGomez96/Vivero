@@ -15,7 +15,7 @@
 
 					<?php
 
-						require('conexion.php');
+						require('../conexion.php');
 						$query="SELECT * FROM ventas ORDER BY codigo_ventas";
 						$resultado=mysqli_query($link,$query);
 
