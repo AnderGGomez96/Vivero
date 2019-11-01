@@ -17,13 +17,13 @@
 		echo"<button onclick=location.href='Eliminar_cultivo.html'>Pagina anterior</button>";
 	}else
 	{
-		require('conexion.php');
+		require('../conexion.php');
 
 		$sql="UPDATE `cultivo` SET `muerte` = 1 WHERE `codigo_cultivo` = $codCul";
 
 		if ($link->query($sql) === TRUE) {
 		    echo "<p>Cultivo eliminado.</p>";
-		    echo"<p><button onclick=location.href='lista_cultivo.php'>hola</button></p>";
+		    echo"<p><button onclick=location.href='../Lista/lista_cultivo.php'>Volver</button></p>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . $link->error;
 		}
