@@ -63,20 +63,17 @@
 	{
 		require('../conexion.php');
                 $sql = "SELECT `codigo_cultivo` FROM `cultivo` WHERE `codigo_cultivo`=$codCul";
-              
-                if($sql != FALSE){
-                    $sql="UPDATE `cultivo` SET `muerte` = 0,`codigo_empleado` = $codEmp,"
-                            . "`codigo_planta` = $codPlanta,`cantidad_cultivo` = $cantCultivo,"
-                            . "`humedad_cultivo` = $humCultivo,`edad_cultivo` = $edadCultivo,"
-                            . "`dias_abono` = $diasAbono,`crecimiento` = $crecimiento"
-                            . " WHERE `codigo_cultivo` = $codCul";
-                    
-                }else{
+                $result = mysqli_query($link, $sql);
+                $row = mysqli_fetch_array($result, MYSQLI_NUM);
+                if(is_null($row)){
                     $sql="INSERT INTO cultivo (codigo_cultivo,codigo_empleado,"
                             . "codigo_planta,cantidad_cultivo,humedad_cultivo,edad_cultivo,dias_abono,"
                             . "crecimiento,muerte)"
                             . "VALUES ($codCul,$codEmp,$codPlanta,$cantCultivo,$humCultivo,$edadCultivo,"
                             . "$diasAbono,$crecimiento,0)";
+                }else{
+                    $sql="UPDATE `cultivo` SET `muerte` = 0"
+                            . " WHERE `codigo_cultivo` = $codCul";
                 }
 		if ($link->query($sql) === TRUE) {
 		    echo "<p>Nuevo registro creado satisfactoriamente</p>";
