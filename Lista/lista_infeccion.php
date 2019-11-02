@@ -15,7 +15,8 @@
 					<?php
 
 						require('../conexion.php');
-						$query="SELECT * FROM infeccion WHERE eliminar = 0 ORDER BY codigo_infeccion";
+						//$query="SELECT * FROM infeccion WHERE eliminar = 0 ORDER BY codigo_infeccion";
+						$query="SELECT * FROM infeccion WHERE codigo_cultivo IN (SELECT codigo_cultivo FROM cultivo WHERE muerte = 0) ORDER BY codigo_cultivo";
 						$resultado=mysqli_query($link,$query);
 
 						while ($extraido= mysqli_fetch_array($resultado)) {
