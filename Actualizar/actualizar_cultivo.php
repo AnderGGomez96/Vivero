@@ -60,6 +60,7 @@
 			$resultado= mysqli_query($link,$retorno);
 			$extraido=mysqli_fetch_array($resultado);
 			$actualizar_planta="UPDATE planta SET cantidad_semilla = (cantidad_semilla+$extraido[cantidad_cultivo]) WHERE codigo_planta = $extraido[codigo_planta]";
+<<<<<<< HEAD
 
 			if ($link->query($actualizar_planta) === TRUE)
 		    {
@@ -77,6 +78,25 @@
 					}
 					$sql="UPDATE cultivo SET codigo_empleado=$codigo_empleado, codigo_planta=$codigo_planta,cantidad_cultivo=$cantidad_cultivo,humedad_cultivo=$humedad_cultivo,edad_cultivo=$edad_cultivo,dias_abono=$dias_abono, crecimiento=$crecimiento, muerte=$muerte WHERE codigo_cultivo=$codigo_cultivo";
 
+=======
+
+			if ($link->query($actualizar_planta) === TRUE)
+		    {
+			    $validar="SELECT cantidad_semilla FROM planta WHERE codigo_planta=$codigo_planta";
+				$resultado= mysqli_query($link,$validar);
+				$extraido=mysqli_fetch_array($resultado);
+				if ($cantidad_cultivo > $extraido['cantidad_semilla'])
+				{
+					echo "<p>La cantidad de unidades de la planta es mayor a la disponible de semillas : $extraido[cantidad_semilla]</p>";
+					echo"<p><button onclick=location.href='actualizar_cultivo.php'>Pagina anterior</button></p>";
+				}else
+				{
+					if ($muerte==2) {
+						$muerte=0;
+					}
+					$sql="UPDATE cultivo SET codigo_empleado=$codigo_empleado, codigo_planta=$codigo_planta,cantidad_cultivo=$cantidad_cultivo,humedad_cultivo=$humedad_cultivo,edad_cultivo=$edad_cultivo,dias_abono=$dias_abono, crecimiento=$crecimiento, muerte=$muerte WHERE codigo_cultivo=$codigo_cultivo";
+
+>>>>>>> adb6ca5e7a2d02c5f5069ba135035e30acf5bf52
 					if ($link->query($sql) === TRUE) {
 					    echo "<p>Registro actualizado satisfactoriamente</p>";
 

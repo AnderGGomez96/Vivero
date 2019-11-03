@@ -13,12 +13,10 @@
 					<td><label>Codigo labor</label></td></tr>
 
 					<?php
-
 						require('../conexion.php');
 						//$query="SELECT * FROM labores_empleados WHERE eliminar = 0 ORDER BY codigo_labor_empleado";
 						$query="SELECT * FROM labores_empleados WHERE codigo_empleado IN (SELECT codigo_empleado FROM empleado WHERE eliminar = 0)";
 						$resultado=mysqli_query($link,$query);
-
 						while ($extraido= mysqli_fetch_array($resultado)) {
 							echo "<tr align='center'><td>".$extraido['codigo_labor_empleado']."</td>";
 							echo "<td>".$extraido['codigo_empleado']."</td>";
