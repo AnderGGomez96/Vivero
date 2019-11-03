@@ -14,11 +14,9 @@
 					<td><label>Unidades</label></td></tr>
 
 					<?php
-
 						require('../conexion.php');
 						$query="SELECT * FROM ventas ORDER BY codigo_ventas";
 						$resultado=mysqli_query($link,$query);
-
 						while ($extraido= mysqli_fetch_array($resultado)) {
 							echo "<tr align='center'><td>".$extraido['codigo_ventas']."</td>";
 							echo "<td>".$extraido['nombre']."</td>";

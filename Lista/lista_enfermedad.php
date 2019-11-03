@@ -25,8 +25,8 @@
 						}
 					?>
 			</table>
-			<input type="button" name="insert" value="Insertar" onclick="window.location.href='insertar_alumnos.php'">
-			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='borrar_alumnos.php'">
+			<input type="button" name="insert" value="Insertar" onclick="window.location.href='../HTML/insertar_enfermedad.html'">
+			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/eliminar_enfermedad.php'">
 
 			<input type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_enfermedad.php'">
 
