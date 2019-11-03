@@ -17,6 +17,10 @@
 		$precio_venta=$_POST["precio_venta"];
 		$error=false;
 		/*Validaciones*/
+		if (empty($codigo_planta)) {
+			echo "<p>codigo_planta empleado vacio ó no valido.</p>";
+			$error=true;
+		}
 		if (empty($nombre) || is_numeric($nombre)) {
 			echo "<p>nombre empleado vacio ó no valido.</p>";
 			$error=true;

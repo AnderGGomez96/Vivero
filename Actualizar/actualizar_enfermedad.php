@@ -12,12 +12,16 @@
 		$tratamiento=$_POST["tratamiento"];
 		$error=false;
 		/*Validaciones*/
+		if (empty($codigo_enfermedad)) {
+			echo "<p>codigo_enfermedad vacio ó no valido.</p>";
+			$error=true;
+		}
 		if (empty($nombre_enfermedad) || is_numeric($nombre_enfermedad)) {
-			echo "<p>codigo empleado vacio ó no valido.</p>";
+			echo "<p>codigo enfermedad vacio ó no valido.</p>";
 			$error=true;
 		}
 		if (empty($tratamiento) || is_numeric($tratamiento)) {
-			echo "<p>cnombre_enfermedad vacio ó no valido</p>";
+			echo "<p>tratamiento vacio ó no valido</p>";
 			$error=true;
 		}
 		if ($error)

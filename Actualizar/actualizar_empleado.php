@@ -15,6 +15,10 @@
 		$telefono=$_POST["telefono"];
 		$error=false;
 		/*Validaciones*/
+		if (empty($codigo_empleado)) {
+			echo "<p>codigo_empleado vacio ó no valido.</p>";
+			$error=true;
+		}
 		if (empty($cedula) || !is_numeric($cedula)) {
 			echo "<p>Cedula vacio ó no valido.</p>";
 			$error=true;

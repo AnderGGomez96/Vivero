@@ -12,6 +12,10 @@
 		$codigo_labor=$_POST["codigo_labor"];
 		$error=false;
 		/*Validaciones*/
+		if (empty($codigo_labor_empleado)) {
+			echo "<p>codigo_labor_empleado vacio ó no valido.</p>";
+			$error=true;
+		}
 		if (empty($codigo_empleado) || !is_numeric($codigo_empleado)) {
 			echo "<p>codigo empleado vacio ó no valido.</p>";
 			$error=true;

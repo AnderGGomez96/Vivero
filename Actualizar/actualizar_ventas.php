@@ -13,6 +13,10 @@
 		$unidades=$_POST["unidades"];
 		$error=false;
 		/*Validaciones*/
+		if (empty($codigo_ventas)) {
+			echo "<p>codigo_ventas cliente vacio ó no valido.</p>";
+			$error=true;
+		}
 		if (empty($nombre) || is_numeric($nombre)) {
 			echo "<p>nombre cliente vacio ó no valido.</p>";
 			$error=true;

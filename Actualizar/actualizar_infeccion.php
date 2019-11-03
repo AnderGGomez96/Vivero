@@ -12,6 +12,10 @@
 		$codigo_enfermedad=$_POST["codigo_enfermedad"];
 		$error=false;
 		/*Validaciones*/
+		if (empty($codigo_infeccion)) {
+			echo "<p>codigo_infeccion vacio ó no valido.</p>";
+			$error=true;
+		}
 		if (empty($codigo_cultivo) || !is_numeric($codigo_cultivo)) {
 			echo "<p>codigo_cultivo vacio ó no valido.</p>";
 			$error=true;

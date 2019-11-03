@@ -38,7 +38,8 @@
 
 			<input type="button" name="insert" value="Insertar" onclick="window.location.href='../HTML/insertar_cultivo.html'">
 			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/eliminarCultivo_Select.php'">
-			<input type="button" name="delete" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_cultivo.php'">
+			<input type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_cultivo.php'">
+			<input type="button" name="termino" value="Termino de Cultivo" onclick="window.location.href='../Actualizar/terminar_cultivo.php'">
 			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
 		</div>
 	</body>
