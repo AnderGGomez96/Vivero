@@ -19,7 +19,7 @@
             {
 		require('../conexion.php');
 
-		$sql="UPDATE `cultivo` SET `muerte` = 1 WHERE `codigo_cultivo` = $codCul";
+		$sql="UPDATE `cultivo` SET `muerte` = 1,`termino`=1 WHERE `codigo_cultivo` = $codCul";
 
 		if ($link->query($sql) === TRUE) {
 		    echo "<p>Cultivo eliminado.</p>";

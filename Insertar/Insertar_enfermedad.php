@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Insertar empleados</title>
+	<title>Insertar enfermedad</title>
 </head>
 <body>
 	<?php 

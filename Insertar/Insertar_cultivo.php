@@ -68,11 +68,11 @@
                 if(is_null($row)){
                     $sql="INSERT INTO cultivo (codigo_cultivo,codigo_empleado,"
                             . "codigo_planta,cantidad_cultivo,humedad_cultivo,edad_cultivo,dias_abono,"
-                            . "crecimiento,muerte)"
+                            . "crecimiento,muerte,termino)"
                             . "VALUES ($codCul,$codEmp,$codPlanta,$cantCultivo,$humCultivo,$edadCultivo,"
-                            . "$diasAbono,$crecimiento,0)";
+                            . "$diasAbono,$crecimiento,0,0)";
                 }else{
-                    $sql="UPDATE `cultivo` SET `muerte` = 0"
+                    $sql="UPDATE `cultivo` SET `muerte` = 0,`termino`=0"
                             . " WHERE `codigo_cultivo` = $codCul";
                 }
 		if ($link->query($sql) === TRUE) {

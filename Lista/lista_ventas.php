@@ -8,7 +8,7 @@
 
 		<div>
 			<table border="1">
-				<tr align="center"><td><label>Codigo planta</label></td>
+				<tr align="center"><td><label>Codigo venta</label></td>
 					<td><label>Nombre</label></td>
 					<td><label>Codigo Planta</label></td>
 					<td><label>Unidades</label></td></tr>
@@ -25,7 +25,7 @@
 						}
 					?>
 			</table>
-			<input type="button" name="insert" value="Insertar" onclick="window.location.href='insertar_alumnos.php'">
+			<input type="button" name="insert" value="Insertar" onclick="window.location.href='../Insertar/insertar_venta.php'">
 			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='borrar_alumnos.php'">
 			<input type="button" name="updat" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_ventas.php'">
 			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
