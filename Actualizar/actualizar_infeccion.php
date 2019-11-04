@@ -47,7 +47,7 @@
 	<form method="post" action="actualizar_infeccion.php">
 		<table>
 			<tr>
-				<td>Codigo Cultivo</td>
+				<td>Codigo infeccion</td>
 				<td>
 					<select name="codigo_infeccion">
 					<?php
@@ -73,12 +73,12 @@
 
 						while($extraido= mysqli_fetch_array($resultado))
 						{
+							echo "<option value='$extraido[codigo_cultivo]'>$extraido[codigo_cultivo]</option>";
 						}
 					?>
 				</td>
 			</tr>
-							echo "<option value='$extraido[codigo_cultivo]'>$extraido[codigo_cultivo]</option>";
-						</select>
+					</select>
 		<tr><td>Codigo enfermedad:</td>
 				<td>
 					<select name="codigo_enfermedad">

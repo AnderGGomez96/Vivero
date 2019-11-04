@@ -37,15 +37,15 @@
 			echo "<p>tipo_planta cultivo vacio ó no valido</p>";
 			$error=true;
 		}
-		if (empty($cantidad_semilla) || !is_numeric($cantidad_semilla)) {
+		if (empty($cantidad_semilla) || !is_numeric($cantidad_semilla) || $cantidad_semilla<0) {
 			echo "<p>cantidad_semilla abono cultivo vacio ó no valido</p>";
 			$error=true;
 		}
-		if (empty($cantidad_flor) || !is_numeric($cantidad_flor)) {
+		if (empty($cantidad_flor) || !is_numeric($cantidad_flor) || $cantidad_flor<0) {
 			echo "<p>cantidad_flor cultivo vacio ó no valido</p>";
 			$error=true;
 		}
-		if (empty($precio_venta) || !is_numeric($precio_venta)) {
+		if (empty($precio_venta) || !is_numeric($precio_venta) || $precio_venta<0) {
 			echo "<p>precio_venta cultivo vacio ó no valido</p>";
 			$error=true;
 		}

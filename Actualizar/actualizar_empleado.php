@@ -19,7 +19,7 @@
 			echo "<p>codigo_empleado vacio ó no valido.</p>";
 			$error=true;
 		}
-		if (empty($cedula) || !is_numeric($cedula)) {
+		if (empty($cedula) || !is_numeric($cedula) || $cedula<0) {
 			echo "<p>Cedula vacio ó no valido.</p>";
 			$error=true;
 		}
@@ -35,7 +35,7 @@
 			echo "<p>Apellido vacio ó no valido</p>";
 			$error=true;
 		}
-		if (empty($telefono) || !is_numeric($telefono)) {
+		if (empty($telefono) || !is_numeric($telefono) || $telefono<0) {
 			echo "<p>Telefono vacio ó no valido</p>";
 			$error=true;
 		}

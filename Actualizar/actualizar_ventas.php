@@ -25,7 +25,7 @@
 			echo "<p>codigo planta vacio ó no valido</p>";
 			$error=true;
 		}
-		if (empty($unidades) || !is_numeric($unidades)) {
+		if (empty($unidades) || !is_numeric($unidades) || $unidades<0) {
 			echo "<p>unidades vacio ó no valido</p>";
 			$error=true;
 		}

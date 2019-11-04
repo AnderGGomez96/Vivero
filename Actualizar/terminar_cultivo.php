@@ -11,7 +11,7 @@
 	{
 		$codigo_cultivo=$_POST["codigo_cultivo"];
 		$termino=$_POST["termino"];
-<<<<<<< HEAD
+
 		$error=false;
 		if (empty($codigo_cultivo)) {
 			echo "cultivo no valido";
@@ -47,10 +47,8 @@
 			{
 				echo "Error: " . $sql . "<br>" . $link->error;
 			} 
-=======
 		if (empty($termino)) {
 			echo "<p>opcion no valida. <button onclick=location.href='terminar_cultivo.php'>Pagina anterior</button></p>";
->>>>>>> adb6ca5e7a2d02c5f5069ba135035e30acf5bf52
 		}
 	}
 	else
@@ -79,26 +77,20 @@
 					<td>Terminar cultivo.</td>
 					<td>
 						<select name="termino">
-<<<<<<< HEAD
+
 							<option value="1">Sí.</option>
 							<option value="0">No.</option>
-=======
 							<option value="2">Sí.</option>
 							<option value="1">No.</option>
->>>>>>> adb6ca5e7a2d02c5f5069ba135035e30acf5bf52
 						</select>
 					</td>
 				</tr>
 			</table>
 			<input type="submit" name="submit" value="Terminar">
 		</form>
-<<<<<<< HEAD
 		<button onclick=location.href='../Lista/lista_cultivo.php'>Lista Cultivo</button>
-=======
->>>>>>> adb6ca5e7a2d02c5f5069ba135035e30acf5bf52
 	<?php
 	}
 	?>
-
 </body>
 </html>
