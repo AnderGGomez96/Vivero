@@ -24,38 +24,41 @@
         
         }else{
             ?>
-                <table border="1">
-                    <tr align="center"><td><label>Codigo planta</label></td>
-                    <td><label>Nombre</label></td>
-                    <td><label>Genero</label></td>
-                    <td><label>Familia</label></td>
-                    <td><label>Tipo de planta</label></td>
-                    <td><label>Cantidad semilla</label></td>
-                    <td><label>Cantidad flores</label></td>
-                    <td><label>Precio venta</label></td>
+                <table align="center" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="thead-dark" scope="col"><center>CODIGO PLANTA</center></th>
+                                        <th class="thead-dark" scope="col"><center>NOMBRE</center></th>
+                                        <th class="thead-dark" scope="col"><center>GENERO</center></th>
+                                        <th class="thead-dark" scope="col"><center>FAMILIA</center></th>
+                                        <th class="thead-dark" scope="col"><center>TIPO DE PLANTA</center></th>
+                                        <th class="thead-dark" scope="col"><center>CANTIDAD SEMILA</center></th>
+                                        <th class="thead-dark" scope="col"><center>CANTIDAD FLORES</center></th>
+                                        <th class="thead-dark" scope="col"><center>PRECIO VENTA</center></th>
+                                    </tr>
+                                </thead>
+					<?php
 
-                    <?php
-                        require('../conexion.php');
-                        $query="SELECT * FROM planta WHERE eliminar = 0 ORDER BY codigo_planta";
-                        $resultado=mysqli_query($link,$query);
+						require('../conexion.php');
+						$query="SELECT * FROM planta WHERE eliminar = 0 ORDER BY codigo_planta";
+						$resultado=mysqli_query($link,$query);
 
-                        while ($extraido= mysqli_fetch_array($resultado)) {
-                            echo "<tr align='center'><td>".$extraido['codigo_planta']."</td>";
-                            echo "<td>".$extraido['nombre']."</td>";
-                            echo "<td>".$extraido['genero']."</td>";
-                            echo "<td>".$extraido['familia']."</td>";
-                            echo "<td>".$extraido['tipo_planta']."</td>";
-                            echo "<td>".$extraido['cantidad_semilla']."</td>";
-                            echo "<td>".$extraido['cantidad_flor']."</td>";
-                            echo "<td>".$extraido['precio_venta']."</td></tr>";
-                        }
-                    ?>
-                </table>
-           
+						while ($extraido= mysqli_fetch_array($resultado)) {
+							echo "<tr align='center'><td>".$extraido['codigo_planta']."</td>";
+							echo "<td>".$extraido['nombre']."</td>";
+							echo "<td>".$extraido['genero']."</td>";
+							echo "<td>".$extraido['familia']."</td>";
+							echo "<td>".$extraido['tipo_planta']."</td>";
+							echo "<td>".$extraido['cantidad_semilla']."</td>";
+							echo "<td>".$extraido['cantidad_flor']."</td>";
+							echo "<td>".$extraido['precio_venta']."</td></tr>";
+						}
+					?>
+			</table>
                 <form method="post" action="eliminar_planta.php">
-
+                    <center><label>
                     <tr><td>Codigo planta: </td>
-                        <td><select name="codPlanta">
+                        <td><select class="form-control" name="codPlanta">
                             <?php    
                                 $query= "SELECT `codigo_planta`"
                                         ." FROM `planta` WHERE `eliminar` = 0 "
@@ -67,8 +70,8 @@
                                 }
                             ?>
                         </select></td></tr>
-                    <br/>
-                        <p><input type="submit" name="Eliminar" value="Eliminar" /></p>
+                <br/></label>
+                        <p><input class="btn btn-primary" type="submit" name="Eliminar" value="Eliminar" /></p>
                 </form>
         <?php
         }

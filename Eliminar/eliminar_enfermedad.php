@@ -15,24 +15,51 @@
 		$error=true;
             }
             if ($error){
-		echo"<button onclick=location.href='eliminar_enfermedad.php'>Pagina anterior</button>";
+                ?>
+                <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-primary" onclick="window.location.href='eliminar_enfermedad.php'"></td></center>
+                <?php
             }else{
 		require('../conexion.php');
 
 		$sql="UPDATE `enfermedad` SET `eliminar` = 1 WHERE `codigo_enfermedad` = $codEnfermedad";
 
 		if ($link->query($sql) === TRUE) {
-		    echo "<p>Empleado eliminado.</p>";
-		    echo"<p><button onclick=location.href='../Lista/lista_enfermedad.php'>Volver</button></p>";
+		    echo "<center><p>Empleado eliminado.</p></center>";
+                    ?>
+                    <center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='../Lista/lista_enfermedad.php'"></td></center>
+                    <?php
 		} else {
 		    echo "Error: " . $sql . "<br>" . $link->error;
 		}
             }
         }else{
             ?>
+                     <table align="center" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="thead-dark" scope="col"><center>Codigo Enfermedad</center></th>
+                                        <th class="thead-dark" scope="col"><center>Nombre Enfermedad</center></th>
+                                        <th class="thead-dark" scope="col"><center>Tratamiento</center></th>
+
+                                    </tr>
+                                    </thead>
+					<?php
+
+						require('../conexion.php');
+						$query="SELECT * FROM enfermedad WHERE eliminar = 0 ORDER BY codigo_enfermedad";
+						$resultado=mysqli_query($link,$query);
+
+						while ($extraido= mysqli_fetch_array($resultado)) {
+							echo "<tr align='center'><td>".$extraido['codigo_enfermedad']."</td>";
+							echo "<td>".$extraido['nombre_enfermedad']."</td>";
+							echo "<td>".$extraido['tratamiento']."</td></tr>";
+						}
+					?>
+			</table>
             <form method="post" action="eliminar_enfermedad.php">
+                <center><label>
                 <tr><td>Codigo enfermedad: </td>
-                    <td><select name="codEnfermedad">
+                    <td><select class="form-control" name="codEnfermedad">
                     <?php
 			require ('../conexion.php');
 			$query= "SELECT `codigo_enfermedad` FROM `enfermedad` "
@@ -44,7 +71,8 @@
 			}
                     ?>
 		</select></td></tr>
-                <p><input type="submit" name="eliminar" value="Eliminar" /></p>
+                <br/></label>
+                <p><input class="btn btn-primary" type="submit" name="eliminar" value="Eliminar" /></p>
         </form>
         <?php
         }

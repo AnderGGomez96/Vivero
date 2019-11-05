@@ -16,36 +16,41 @@
                         . " WHERE `codigo_labor_empleado`= $codLabor ";
                 
 		if ($link->query($sql) === TRUE) {
-		    echo "<p>Registro eliminado satisfactoriamente</p>";
-		    echo"<p><button onclick=location.href='../Lista/lista_labores_empleado.php'>Volver</button></p>";
+		    echo "<center><p>Registro eliminado satisfactoriamente</p></center>";
+                    ?>
+                    <center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='../Lista/lista_labores_empleado.php'"></td></center>
+                    <?php
 		} else {
 		    echo "Error: " . $sql . "<br>" . $link->error;
 		}
         
         }else{
             ?>
-                <table border="1">
-                    <tr align="center"><td><label>Codigo labor-empleado</label></td>
-                    <td><label>Codigo empleado</label></td>
-                    <td><label>Codigo labor</label></td></tr>
+                 <table align="center" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="thead-dark" scope="col"><center>CODIGO LABOR EMPLEADO</center></th>
+                                        <th class="thead-dark" scope="col"><center>CODIGO EMPLEADO</center></th>
+                                        <th class="thead-dark" scope="col"><center>CODIGO LABOR</center></th>
+                                    </tr>
+                                    </thead>
 
-                    <?php
-                        require('../conexion.php');
-                        //$query="SELECT * FROM labores_empleados WHERE eliminar = 0 ORDER BY codigo_labor_empleado";
-                        $query="SELECT * FROM labores_empleados WHERE codigo_empleado IN (SELECT codigo_empleado FROM empleado WHERE eliminar = 0) AND eliminar=0";
-                        $resultado=mysqli_query($link,$query);
-                        while ($extraido= mysqli_fetch_array($resultado)) {
-                        echo "<tr align='center'><td>".$extraido['codigo_labor_empleado']."</td>";
-                        echo "<td>".$extraido['codigo_empleado']."</td>";
-                        echo "<td>".$extraido['codigo_labor']."</td></tr>";
-                        }
-                    ?>
-		</table>
-           
+					<?php
+						require('../conexion.php');
+						//$query="SELECT * FROM labores_empleados WHERE eliminar = 0 ORDER BY codigo_labor_empleado";
+						$query="SELECT * FROM labores_empleados WHERE codigo_empleado IN (SELECT codigo_empleado FROM empleado WHERE eliminar = 0) AND eliminar =0";
+						$resultado=mysqli_query($link,$query);
+						while ($extraido= mysqli_fetch_array($resultado)) {
+							echo "<tr align='center'><td>".$extraido['codigo_labor_empleado']."</td>";
+							echo "<td>".$extraido['codigo_empleado']."</td>";
+							echo "<td>".$extraido['codigo_labor']."</td></tr>";
+						}
+					?>
+			</table>
                 <form method="post" action="eliminar_labores_empleado.php">
-
+                    <center><label>
                     <tr><td>Codigo labor empleado: </td>
-                        <td><select name="codLabor">
+                        <td><select class="form-control" name="codLabor">
                             <?php    
                                 $query= "SELECT `codigo_labor_empleado`"
                                         ." FROM `labores_empleados` WHERE `eliminar` = 0 "
@@ -57,8 +62,8 @@
                                 }
                             ?>
                         </select></td></tr>
-                    <br/>
-                        <p><input type="submit" name="Eliminar" value="Eliminar" /></p>
+                <br/></label>
+                        <p><input class="btn btn-primary" type="submit" name="Eliminar" value="Eliminar" /></p>
                 </form>
         <?php
         }

@@ -21,40 +21,42 @@
 			$error=false;
 			/*Validaciones*/
 			if (empty($codigo_cultivo)) {
-				echo "<p>codigo_cultivo vacio ó no valido.</p>";
+				echo "<center><p>codigo_cultivo vacio ó no valido.</p></center>";
 				$error=true;
 			}
 			if (empty($codigo_empleado) || !is_numeric($codigo_empleado) || $codigo_empleado<0) {
-				echo "<p>codigo empleado vacio ó no valido.</p>";
+				echo "<center><p>codigo empleado vacio ó no valido.</p></center>";
 				$error=true;
 			}
 			if (empty($codigo_planta) || !is_numeric($codigo_planta) || $codigo_planta<0) {
-				echo "<p>codigo planta vacio ó no valido</p>";
+				echo "<center><p>codigo planta vacio ó no valido</p></center>";
 				$error=true;
 			}
 			if (empty($cantidad_cultivo) || !is_numeric($cantidad_cultivo) || $cantidad_cultivo<0) {
-				echo "<p>cantidad_cultivo vacio ó no valido</p>";
+				echo "<center><p>cantidad_cultivo vacio ó no valido</p></center>";
 				$error=true;
 			}
 			if (empty($humedad_cultivo) || !is_numeric($humedad_cultivo)|| $humedad_cultivo<0) {
-				echo "<p>humedad cultivo vacio ó no valido</p>";
+				echo "<center><p>humedad cultivo vacio ó no valido</p></center>";
 				$error=true;
 			}
 			if (empty($dias_abono) || !is_numeric($dias_abono)|| $dias_abono<0) {
-				echo "<p>dias abono cultivo vacio ó no valido</p>";
+				echo "<center><p>dias abono cultivo vacio ó no valido</p></center>";
 				$error=true;
 			}
 			if (empty($crecimiento) || !is_numeric($crecimiento)|| $crecimiento<0) {
-				echo "<p>crecimiento cultivo vacio ó no valido</p>";
+				echo "<center><p>crecimiento cultivo vacio ó no valido</p></center>";
 				$error=true;
 			}
 			if (empty($muerte)) {
-				echo "<p>muerte cultivo vacio ó no valido</p>";
+				echo "<center><p>muerte cultivo vacio ó no valido</p></center>";
 				$error=true;
 			}
 			if ($error)
 			{
-				echo"<button onclick=location.href='actualizar_cultivo.php'>Pagina anterior</button>";
+                            ?>
+                                <center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='actualizar_cultivo.php'"></td></center>
+                            <?php
 			}else
 			{
 				require('../conexion.php');
@@ -103,11 +105,12 @@
 		{
 		?>
 		<form method="post" action="actualizar_cultivo.php">
+                    <center>
 			<table>
 				<tr>
-					<td>Codigo Cultivo</td>
+					<td>Codigo Cultivo: </td>
 					<td>
-						<select name="codigo_cultivo">
+						<select class="form-control" name="codigo_cultivo">
 						<?php
 							require ('../conexion.php');
 							$query= "SELECT * FROM cultivo WHERE termino = 0 ORDER BY codigo_cultivo";
@@ -121,9 +124,9 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td>Codigo empleado:</td>
+				<tr><td>Codigo empleado: </td>
 					<td>
-						<select name="codigo_empleado">
+						<select class="form-control" name="codigo_empleado">
 						<?php
 							require ('../conexion.php');
 							$query= "SELECT * FROM empleado WHERE eliminar = 0 ORDER BY codigo_empleado";
@@ -137,9 +140,9 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td>Codigo planta:</td>
+				<tr><td>Codigo planta: </td>
 					<td>
-						<select name="codigo_planta">
+						<select class="form-control" name="codigo_planta">
 						<?php
 							require ('../conexion.php');
 							$query= "SELECT * FROM planta WHERE eliminar = 0 ORDER BY codigo_planta";
@@ -153,33 +156,35 @@
 						</select>
 					</td>
 				</tr>
-					<tr><td>Cantidad cultivo:</td>
-					<td><input type="number" name="cantidad_cultivo"></td>
+					<tr><td>Cantidad cultivo: </td>
+					<td><input class="form-control" type="number" name="cantidad_cultivo"></td>
 				</tr>
-					<tr><td>Humedad cultivo:</td>
-					<td><input type="number" name="humedad_cultivo"></td>
+					<tr><td>Humedad cultivo: </td>
+					<td><input  class="form-control" type="number" name="humedad_cultivo"></td>
 				</tr>
-					<tr><td>Edad Cultivo:</td>
-					<td><input type="number" name="edad_cultivo"></td>
+					<tr><td>Edad Cultivo: </td>
+					<td><input class="form-control" type="number" name="edad_cultivo"></td>
 				</tr>
-				<tr><td>Dias abono:</td>
-					<td><input type="number" name="dias_abono"></td>
+				<tr><td>Dias abono: </td>
+					<td><input class="form-control" type="number" name="dias_abono"></td>
 				</tr>
-				<tr><td>Crecimiento:</td>
-					<td><input type="number" name="crecimiento"></td>
+				<tr><td>Crecimiento: </td>
+					<td><input class="form-control" type="number" name="crecimiento"></td>
 				</tr>
-				<tr><td>Muerte:</td>
-					<td><select name="muerte">
+				<tr><td>Muerte: </td>
+					<td><select class="form-control" name="muerte">
 						<option value=2>0</option>
 						<option value=1>1</option>
 					</select></td>
 				</tr>
 			</table>
-			<input type="submit" name="submit" value="Actualizar">
+                        <br>
+			<input class="btn btn-primary" type="submit" name="submit" value="Actualizar">
 		</form>
-		<button onclick=location.href='../Lista/lista_cultivo.php'>Lista Cultivo</button>
+		<button class="btn btn-success" onclick=location.href='../Lista/lista_cultivo.php'>Lista Cultivo</button>
 		<?php
 		}
 		?>
+                </center>
 	</body>
 </html>

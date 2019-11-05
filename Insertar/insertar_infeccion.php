@@ -29,7 +29,7 @@
             if ($link->query($sql) === TRUE) {
                  echo "<center><p>Nuevo registro creado satisfactoriamente</p></center>";
                  ?>
-<center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='../Lista/lista_infeccion.php'"></td></center>
+                <center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='../Lista/lista_infeccion.php'"></td></center>
                 <?php
             } else {
                 echo "Error: " . $sql . "<br>" . $link->error;

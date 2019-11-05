@@ -25,40 +25,47 @@
                     . "AND `codigo_enfermedad`='$Enfermedad'";
 
                 if ($link->query($sql) === TRUE) {
-                echo "<p>Registro eliminado</p>";
-                echo"<p><button onclick=location.href='../Lista/lista_infeccion.php'>Volver</button></p>";
+                echo "<center><p>Registro eliminado</p></center>";
+                ?>
+                <center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='../Lista/lista_infeccion.php'"></td></center>
+                <?php
                 } else {
                     echo "Error: " . $sql . "<br>" . $link->error;
                 }
             }else{
                 echo "El cultivo no esta registrado con la enfermedad $Enfermedad";
-                echo"<p><button onclick=location.href='../Lista/lista_infeccion.php'>Volver</button></p>";
+                ?>
+                <center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='../Lista/lista_infeccion.php'"></td></center>
+                <?php
             }
 	}else{
             ?>
-            <table border="1">
-        
-            <tr align="center"><td><label>Codigo infeccion</label></td>
-            <td><label>Codigo cultivo</label></td>
-            <td><label>Codigo enfermedad</label></td></tr>
-            <?php
-                require('../conexion.php');
-                $query="SELECT * FROM infeccion WHERE `codigo_cultivo`"
-                        . " IN (SELECT `codigo_cultivo` FROM cultivo"
-                        . " WHERE (`muerte` = 0 AND `termino`=0)"
-                        . " ORDER BY `codigo_cultivo`) AND `eliminar`=0";
-                $resultado=mysqli_query($link,$query);
-                while ($extraido= mysqli_fetch_array($resultado)) {
-                    echo "<tr align='center'><td>".$extraido['codigo_infeccion']."</td>";
-                    echo "<td>".$extraido['codigo_cultivo']."</td>";
-                    echo "<td>".$extraido['codigo_enfermedad']."</td></tr>";
-                }
-            ?>
-	</table>
+              <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>Codigo Infeccion</center></th>
+                                <th class="thead-dark" scope="col"><center>Codigo Cultivo</center></th>
+                                <th class="thead-dark" scope="col"><center>Codigo Enfermedad</center></th>
+                            </tr>
+                            </thead>
+					<?php
+						require('../conexion.php');
+						$query="SELECT * FROM infeccion WHERE `codigo_cultivo`"
+                                                        . " IN (SELECT `codigo_cultivo` FROM cultivo"
+                                                        . " WHERE (`muerte` = 0 AND `termino`=0)"
+                                                        . " ORDER BY `codigo_cultivo`) AND `eliminar`=0";
+						$resultado=mysqli_query($link,$query);
+						while ($extraido= mysqli_fetch_array($resultado)) {
+							echo "<tr align='center'><td>".$extraido['codigo_infeccion']."</td>";
+							echo "<td>".$extraido['codigo_cultivo']."</td>";
+							echo "<td>".$extraido['codigo_enfermedad']."</td></tr>";
+						}
+					?>
+                    </table>
 	<form method="post" action="eliminarInfeccion.php">
-		
+            <center><label>
             <tr><td>Codigo cultivo: </td>
-		<td><select name="codCul">
+		<td><select class="form-control" name="codCul">
                     <?php    
 			$query= "SELECT `codigo_cultivo`"
                                 . " FROM `cultivo` WHERE `muerte` = 0 "
@@ -69,10 +76,10 @@
                             echo "<option value='$extraido[codigo_cultivo]'>$extraido[codigo_cultivo]</option>";
 			}
                     ?>
-		</select></td></tr>
-            <br/>
+               </select></td></tr>
+                    <br/>
             <tr><td>Enfermedad: </td>
-		<td><select name="codEnfermedad">
+		<td><select class="form-control" name="codEnfermedad">
                     <?php
 			$query= "SELECT `codigo_enfermedad` FROM `enfermedad` WHERE `eliminar` = 0";
 			$resultado= mysqli_query($link,$query);
@@ -82,7 +89,8 @@
 			}
                     ?>
 		</select></td></tr>
-                <p><input type="submit" name="insertar" value="Eliminar" /></p>
+            <br>
+                <p><input class="btn btn-primary" type="submit" name="insertar" value="Eliminar" /></p>
         </form>
     <?php
         }
