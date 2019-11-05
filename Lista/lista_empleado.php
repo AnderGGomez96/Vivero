@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
+            <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 		<title>Lista de empleados</title>
 	</head>
 	<body>
 
-
-		
-			<table border="1">
-				<tr align="center"><td><label>Codigo</label></td>
-					<td><label>Cedula</label></td>
-					<td><label>Nombre</label></td>
-					<td><label>Primero apellido</label></td>
-					<td><label>Segundo apellido</label></td>
-					<td><label>Telefono</label></td></tr>
-
+                    <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>Codigo</center></th>
+                                <th class="thead-dark" scope="col"><center>Cedula</center></th>
+                                <th class="thead-dark" scope="col"><center>Nombre</center></th>
+                                <th class="thead-dark" scope="col"><center>Primer Apellido</center></th>
+                                <th class="thead-dark" scope="col"><center>Segundo Apellido</center></th>
+                                <th class="thead-dark" scope="col"><center>Telefono</center></th>
+                            </tr>
+                            </thead>
 					<?php
 
 						require('../conexion.php');
@@ -30,13 +33,17 @@
 							echo "<td>".$extraido['telefono']."</td></tr>";
 						}
 					?>
-			</table>
-			<input type="button" name="insert" value="Insertar" onclick="window.location.href='../HTML/insertar_empleado.html'">
-			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/Eliminar_empleado.php'">
-
-			<input type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_empleado.php'">
- 
-			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
-		
+            </table>
+            <center> <table align="center">
+		<BR>
+		<tr>
+			<input class="btn btn-primary" type="button" name="insert" value="Insertar" onclick="window.location.href='../HTML/insertar_empleado.html'">
+			<input class="btn btn-danger" type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/Eliminar_empleado.php'">
+			<input class="btn btn-success" type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_empleado.php'">
+			<input class="btn btn-info" type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
+		</tr>
+		</table>
+                </center>
+		</div>
 	</body>
 </html>

@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
+            <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 		<title>Lista de Enfermedades</title>
 	</head>
 	<body>
 
 
 		<div>
-			<table border="1">
-				<tr align="center"><td><label>Codigo enfermedad</label></td>
-					<td><label>Nombre Enfermedad</label></td>
-					<td><label>Tratamiento</label></td></tr>
+                            <table align="center" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="thead-dark" scope="col"><center>Codigo Enfermedad</center></th>
+                                        <th class="thead-dark" scope="col"><center>Nombre Enfermedad</center></th>
+                                        <th class="thead-dark" scope="col"><center>Tratamiento</center></th>
 
+                                    </tr>
+                                    </thead>
 					<?php
 
 						require('../conexion.php');
@@ -25,12 +31,16 @@
 						}
 					?>
 			</table>
-			<input type="button" name="insert" value="Insertar" onclick="window.location.href='../HTML/insertar_enfermedad.html'">
-			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/eliminar_enfermedad.php'">
-
-			<input type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_enfermedad.php'">
-
-			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
+            <center> <table align="center">
+		<BR>
+		<tr>
+			<input class="btn btn-primary" type="button" name="insert" value="Insertar" onclick="window.location.href='../HTML/insertar_enfermedad.html'">
+			<input class="btn btn-danger" type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/eliminar_enfermedad.php'">
+			<input class="btn btn-success" type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_enfermedad.php'">
+			<input class="btn btn-info" type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
+               </tr>
+		</table>
+                </center>
 		</div>
 	</body>
 </html>

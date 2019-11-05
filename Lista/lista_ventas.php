@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
+            <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 		<title>Lista de ventas Activos</title>
 	</head>
 	<body>
-
-
 		<div>
-			<table border="1">
-				<tr align="center"><td><label>Codigo venta</label></td>
-					<td><label>Nombre</label></td>
-					<td><label>Codigo Planta</label></td>
-					<td><label>Unidades</label></td></tr>
-
+                    <table align="center" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="thead-dark" scope="col"><center>CODIGO VENTA</center></th>
+                                        <th class="thead-dark" scope="col"><center>NOMBRE</center></th>
+                                        <th class="thead-dark" scope="col"><center>CODIGO PLANTA</center></th>
+                                        <th class="thead-dark" scope="col"><center>UNIDADES</center></th>
+                                    </tr>
+                                </thead>              
 					<?php
 						require('../conexion.php');
 						$query="SELECT * FROM ventas ORDER BY codigo_ventas";
@@ -25,10 +28,17 @@
 						}
 					?>
 			</table>
-			<input type="button" name="insert" value="Insertar" onclick="window.location.href='../Insertar/insertar_venta.php'">
-			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='borrar_alumnos.php'">
-			<input type="button" name="updat" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_ventas.php'">
-			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
+                   <center> <table align="center">
+                        <BR>
+                        <tr>
+                    <center><input class="btn btn-primary" type="button" name="insert" value="Insertar" onclick="window.location.href='../Insertar/insertar_venta.php'">
+			<input class="btn btn-success" type="button" name="updat" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_ventas.php'">
+			<input class="btn btn-info" type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'"></center>
 		</div>
+            </tr>
+		</table>
+                </center>
+            </label></center>
+          
 	</body>
 </html>

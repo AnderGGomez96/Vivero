@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insertar cultivo</title>
 </head>
 <body>
@@ -16,49 +18,51 @@
 	$error=false;
 /*Validaciones*/
 	if (empty($codCul) || !is_numeric($codCul)) {
-		echo "<p>Codigo cultivo vacio ó no valido.</p>";
+		echo "<center><p>Codigo cultivo vacio ó no valido.</p></center>";
 		$error=true;
 	}
 	if (empty($codEmp) || !is_numeric($codEmp)) {
-		echo "<p>Codigo empleado vacio ó no valido</p>";
+		echo "<center><p>Codigo empleado vacio ó no valido</p></center>";
 		$error=true;
 	}
 	if (empty($codPlanta) || !is_numeric($codPlanta)) {
-		echo "<p>Codigo planta vacio ó no valido</p>";
+		echo "<center><p>Codigo planta vacio ó no valido</p></center>";
 		$error=true;
 	}
 	if (empty($cantCultivo) || !is_numeric($cantCultivo)) {
-		echo "<p>Cantidad de cultivo vacio ó no valido</p>";
+		echo "<center><p>Cantidad de cultivo vacio ó no valido</p></center>";
 		$error=true;
 	}
 	if (empty($humCultivo) || !is_numeric($humCultivo)) {
-		echo "<p>Humedad cultivo vacio ó no valido</p>";
+		echo "<center><p>Humedad cultivo vacio ó no valido</p></center>";
 		$error=true;
 	}
         if (empty($edadCultivo) || !is_numeric($edadCultivo)) {
-		echo "<p>Edad cultivo vacio ó no valido</p>";
+		echo "<center><p>Edad cultivo vacio ó no valido</p></center>";
 		$error=true;
 	}
         if (empty($humCultivo) || !is_numeric($humCultivo)) {
-		echo "<p>Humedad cultivo vacio ó no valido</p>";
+		echo "<center><p>Humedad cultivo vacio ó no valido</p></center>";
 		$error=true;
 	}
         if (empty($edadCultivo) || !is_numeric($edadCultivo)) {
-		echo "<p>Edad de cultivo vacio ó no valido</p>";
+		echo "<center><p>Edad de cultivo vacio ó no valido</p></center>";
 		$error=true;
 	}
         if (empty($diasAbono) || !is_numeric($diasAbono)) {
-		echo "<p>Dias de abono vacio ó no valido</p>";
+		echo "<center><p>Dias de abono vacio ó no valido</p></center>";
 		$error=true;
 	}
         if (empty($crecimiento) || !is_numeric($crecimiento)) {
-		echo "<p>crecimiento cultivo"
-            ."vacio ó no valido</p>";
+		echo "<center><p>crecimiento cultivo"
+            ." vacio ó no valido</p>";
 		$error=true;
 	}
 	if ($error)
 	{
-		echo"<button onclick=location.href='insertar_empleado.html'>Pagina anterior</button>";
+            ?>
+                <center><input class="btn btn-primary" onclick=location.href='../HTML/insertar_cultivo.html' type="submit" name="Insertar" value="Insertar" /></p></center>
+            <?php
 	}else
 	{
 		require('../conexion.php');

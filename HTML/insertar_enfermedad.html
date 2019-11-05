@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insercion de Empleados</title>
 </head>
 <body>
+        <div class="container text-center">
+        <label>
 	<form method="post" action="../Insertar/Insertar_enfermedad.php">
-		<p>Nombre enfermedad: <input type="name" name="nombre_enfermedad"></p>
-                <p>Tratamiento: <input type="text" name="tratamiento"></p>
-		<p><input type="submit" name="Insertar" value="Insertar" /></p>
+            <center>
+            <table>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>NOMBRE ENFERMEDAD</label></td>
+                        <td width="50%"><input type="name" name="nombre_enfermedad" class="form-control" id="exampleInputEmail1" placeholder="Nombre Enfermedad"></td>
+                    </div>
+                </tr>
+		<tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>TRATAMIENTO</label></td>
+                        <td width="50%"><input type="text" name="tratamiento" class="form-control" id="exampleInputEmail1" placeholder="Tratamiento"></td>
+                    </div>
+                </tr>
+            </table>
+                <center> <br><p><input class="btn btn-primary" type="submit" name="Insertar" value="Insertar" /></p></center>
 	</form>
+            </center>
+        </label>
+        </div>
 </body>
 </html>

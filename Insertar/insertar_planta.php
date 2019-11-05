@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insercion de plantas</title>
 </head>
 <body>
@@ -16,33 +18,35 @@
             $error=FALSE;
             
             if (empty($nombre) || is_numeric($nombre)) {
-			echo "<p>Nombre vacio ó no valido.</p>";
+			echo "<center><p>Nombre vacio ó no valido.</p></center>";
 			$error=true;
 		}
             if (empty($genero) || is_numeric($genero)) {
-			echo "<p>Genero vacio ó no valido.</p>";
+			echo "<center><p>Genero vacio ó no valido.</p></center>";
 			$error=true;
 		}
             if (empty($familia) || is_numeric($familia)) {
-			echo "<p>Familia vacio ó no valido.</p>";
+			echo "<center><p>Familia vacio ó no valido.</p></center>";
 			$error=true;
 		}
             if (empty($tipo_planta) || is_numeric($tipo_planta)) {
-			echo "<p>Tipo planta vacio ó no valido.</p>";
+			echo "<center><p>Tipo planta vacio ó no valido.</p></center>";
 			$error=true;
 		}
             if (empty($cantidad_semilla) || !is_numeric($cantidad_semilla)) {
-			echo "<p>Cantidad semilla vacio ó no valido.</p>";
+			echo "<center><p>Cantidad semilla vacio ó no valido.</p></center>";
 			$error=true;
 		}
             if (empty($precio_venta) || !is_numeric($precio_venta)) {
-			echo "<p>Precio venta vacio ó no valido.</p>";
+			echo "<center><p>Precio venta vacio ó no valido.</p></center>";
 			$error=true;
 		}
                 
             if($error==TRUE){
-                echo "<p>Error en la insercion de datos</p>";
-                echo"<p><button onclick=location.href='insertar_planta.php'>Volver</button></p>";
+                echo "<center><p>Error en la insercion de datos</p></center>";
+                ?>
+                <center><td><input type="button" name="Volver" value="Volver" class="btn btn-primary" onclick="window.location.href='insertar_planta.php'"></td></center>
+                <?php
             }else{
                 require('../conexion.php');
                 
@@ -70,15 +74,54 @@
             }
         }else{
             ?>
-    <form method="post" action="insertar_planta.php">
-		<p>Nombre: <input type="name" name="nombre"></p>
-		<p>Genero: <input type="name" name="genero"></p>
-		<p>Familia: <input type="name" name="familia"></p>
-		<p>Tipo planta: <input type="name" name="tipo_planta"></p>
-		<p>Cantidad semilla: <input type="number" name="cantidad_semilla"></p>
-                <p>Precio venta: <input type="number" name="precio_venta"></p>
-		<p><input type="submit" name="insertar" value="Insertar" /></p>
+            <div class="container text-center">
+            <label>
+            <form method="post" action="insertar_planta.php">
+                <center>
+                <table>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>NOMBRE</label></td>
+                        <td width="50%"><input type="name" name="nombre" class="form-control" placeholder="NOMBRE"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>GENERO</label></td>
+                        <td width="50%"><input type="name" name="genero" class="form-control" placeholder="GENERO"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>FAMILIA</label></td>
+                        <td width="50%"><input type="name" name="familia" class="form-control" placeholder="FAMILIA"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>TIPO DE PLANTA</label></td>
+                        <td width="50%"><input type="name" name="tipo_planta" class="form-control" placeholder="TIPO DE PLANTA"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>CANTIDAD SEMILLA</label></td>
+                        <td width="50%"><input type="number" name="cantidad_semilla" class="form-control" placeholder="CANTIDAD SEMILLA"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>PRECIO VENTA</label></td>
+                        <td width="50%"><input type="number" name="precio_venta" class="form-control" placeholder="PRECIO DE LA VENTA"></td>
+                    </div>
+                </tr>
+                </table>
+                    <br>
+		<p><input class="btn btn-primary" type="submit" name="insertar" value="Insertar" /></p>
             </form>
+            </center>
+            </label>
+            </div>
         <?php
         }
 	?>

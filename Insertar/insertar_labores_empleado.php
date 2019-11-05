@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insercion de Empleados</title>
 </head>
 <body>
@@ -26,22 +28,28 @@
                             . "AND `codigo_labor`=$codLabor)";
                 }
 		if ($link->query($sql) === TRUE) {
-		    echo "<p>Nuevo registro creado satisfactoriamente</p>";
-		    echo"<p><button onclick=location.href='../Lista/lista_labores_empleado.php'>Volver</button></p>";
+		    echo "<center><p>Nuevo registro creado satisfactoriamente</p></center>";
+                    ?>
+<center><td><input type="button" name="labores_empleados" value="Lista Labores Empleado" class="btn btn-primary" onclick="window.location.href='../Lista/lista_labores_empleado.php'"></td></center>
+                    <?php
 		} else {
 		    echo "Error: " . $sql . "<br>" . $link->error;
 		}
         
         }else{
             ?>
-            <tr><td>Empleados </td>
-                <table border="1">
-                    <tr align="center"><td><label>Codigo</label></td>
-                    <td><label>Nombre</label></td>
-                    <td><label>Apellido 1</label></td>
-                    <td><label>Apellido 2</label></td>
-                    </tr>
-
+        <center><label>
+            <center><tr><p class="h2">EMPLEADOS</p><center>
+                    <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>CODIGO</center></th>
+                                <th class="thead-dark" scope="col"><center>NOMBRE</center></th>
+                                <th class="thead-dark" scope="col"><center>APELLIDO 1</center></th>
+                                <th class="thead-dark" scope="col"><center>APELLIDO 2</center></th>
+                            </tr>
+                            </thead>  
+                        
                     <?php
                     require('../conexion.php');
                     $query="SELECT `codigo_empleado`,`nombre`,`apellido1`,`apellido2` FROM `empleado` WHERE `eliminar`=0";
@@ -54,12 +62,17 @@
                         }
                     ?>
                 </table>
-                <tr><td>Labores </td>
-                <table border="1">
-                    <tr align="center"><td><label>Codigo</label>
-                        <td><label>Labor</label></td>
-                    </tr>
-
+                    </label></center>
+                
+                <center><label>
+            <center><tr><p class="h2">LABORES</p><center>
+                    <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>CODIGO</center></th>
+                                <th class="thead-dark" scope="col"><center>LABOR</center></th>
+                            </tr>
+                            </thead> 
                     <?php
                     require('../conexion.php');
                     $query="SELECT `codigo_labor`,`nombre` FROM `labores` WHERE `eliminar`=0";
@@ -70,10 +83,11 @@
                         }
                     ?>
                 </table>
+                    </label></center>
                 <form method="post" action="insertar_labores_empleado.php">
 
                     <tr><td>Codigo empleado: </td>
-                        <td><select name="codEmpleado">
+                        <td><select class="form-control" name="codEmpleado">
                             <?php    
                                 $query= "SELECT `codigo_empleado`"
                                         . " FROM `empleado` WHERE `eliminar` = 0 "
@@ -87,7 +101,7 @@
                         </select></td></tr>
                     <br/>
                     <tr><td>Codigo labor: </td>
-                        <td><select name="codLabor">
+                        <td><select class="form-control" name="codLabor">
                             <?php
                                 require ('../conexion.php');
                                 $query= "SELECT `codigo_labor` FROM `labores` WHERE `eliminar`=0";
@@ -98,7 +112,8 @@
                                 }
                             ?>
                         </select></td></tr>
-                        <p><input type="submit" name="insertar" value="Insertar" /></p>
+                    <br>
+                        <p><input class="btn btn-primary" type="submit" name="insertar" value="Insertar" /></p>
                 </form>
         <?php
         }

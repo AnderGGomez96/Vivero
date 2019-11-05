@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insercion de Empleados</title>
 </head>
 <body>
-	<form method="post" action="../Insertar/insertar_empleado.php">
-		<p>Cedula: <input type="number" name="cedula"></p>
-		<p>Nombre: <input type="name" name="nombre"></p>
-		<p>Primer Apellido: <input type="name" name="apellido1"></p>
-		<p>Segundo Apellido: <input type="name" name="apellido2"></p>
-		<p>Telefono: <input type="number" name="telefono"></p>
-		<p><input type="submit" name="Insertar" value="Insertar" /></p>
-	</form>
+    <div class="container text-center">
+    <label>
+    <form method="post" action="../Insertar/insertar_empleado.php">
+      <center>
+            <table>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>CEDULA</label></td>
+                        <td width="50%"><input type="number" name="cedula" class="form-control" id="exampleInputEmail1" placeholder="Cedula"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>NOMBRE</label></td>
+                        <td width="50%"><input type="name" name="nombre" class="form-control" id="exampleInputEmail1" placeholder="Nombre"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>PRIMER APELLIDO</label></td>
+                        <td width="50%"><input type="name" name="apellido1" class="form-control" id="exampleInputEmail1" placeholder="Primer Apellido"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>SEGUNDO APELLIDO</label></td>
+                        <td width="50%"><input type="name" name="apellido2" class="form-control" id="exampleInputEmail1" placeholder="Segundo Apellido"></td>
+                    </div>
+                </tr>
+		<tr>
+                    <div  class="form-group">
+                        <td width="50%"><label>TELEFONO</label></td>
+                        <td width="50%"><input type="number" name="telefono" class="form-control" id="exampleInputEmail1" placeholder="Telefono"></td>
+                    </div>
+                </tr>
+            </table>
+            <center> <br><p><p><input class="btn btn-primary" type="submit" name="Insertar" value="Insertar" /></p></center> 
+        </form>
+        </center>
+        </label>
+        </div>
 </body>
 </html>

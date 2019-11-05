@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Lista de Cultivos Activos</title>
+                <title>Lista de Cultivos Activos</title>
+                <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	</head>
 	<body>
 
 
 		<div>
-			<table border="1">
-				<tr align="center"><td><label>Codigo cultivo</label></td>
-					<td><label>Codigo Empleado</label></td>
-					<td><label>Codigo Planta</label></td>
-					<td><label>Cantidad Cultivo</label></td>
-					<td><label>Humedad Cultivo</label></td>
-					<td><label>Edad Cultivo</label></td>
-					<td><label>Dias abono</label></td>
-					<td><label>Crecimiento</label></td></tr>
-
+                    <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>Codigo cultivo</center></th>
+                                <th class="thead-dark" scope="col"><center>Codigo Empleado</center></th>
+                                <th class="thead-dark" scope="col"><center>Codigo Planta</center></th>
+                                <th class="thead-dark" scope="col"><center>Cantidad Cultivo</center></th>
+                                <th class="thead-dark" scope="col"><center>Humedad Cultivo</center></th>
+                                <th class="thead-dark" scope="col"><center>Edad Cultivo</center></th>
+                                <th class="thead-dark" scope="col"><center>Dias abono</center></th>
+                                <th class="thead-dark" scope="col"><center>Crecimiento</center></th>
+                            </tr>
+                            </thead>
 					<?php
 
 						require('../conexion.php');
@@ -31,15 +36,20 @@
 							echo "<td>".$extraido['humedad_cultivo']."</td>";
 							echo "<td>".$extraido['edad_cultivo']."</td>";
 							echo "<td>".$extraido['dias_abono']."</td>";
-							echo "<td>".$extraido['crecimiento']."</td></tr>";
+							echo "<td>".$extraido['crecimiento']."</td>";
 						}
 					?>
 			</table>
-
-			<input type="button" name="insert" value="Insertar" onclick="window.location.href='../HTML/insertar_cultivo.html'">
-			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/eliminarCultivo_Select.php'">
-			<input type="button" name="delete" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_cultivo.php'">
-			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
+                    <center> <table align="center">
+				<BR>
+				<tr>
+                                        <input type="button" name="insert" value=" Insertar " class="btn btn-primary" onclick="window.location.href='../HTML/insertar_cultivo.html'">
+                                        <input type="button" name="delete" value=" Eliminar " class="btn btn-danger" onclick="window.location.href='../Eliminar/eliminarCultivo_Select.php'">
+                                        <input type="button" name="delete" value=" Actualizar " class="btn btn-success" onclick="window.location.href='../Actualizar/actualizar_cultivo.php'">
+                                        <input type="button" name="volver" value=" Volver " class="btn btn-info" onclick="window.location.href='../index.php'">
+				</tr>
+			</table>
+			</center>
 		</div>
 	</body>
 </html>

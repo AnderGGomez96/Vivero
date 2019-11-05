@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insertar empleados</title>
 </head>
 <body>
@@ -13,28 +15,30 @@
 	$error=false;
 /*Validaciones*/
 	if (empty($cedula) || !is_numeric($cedula)) {
-		echo "<p>Cedula vacio ó no valido.</p>";
+		echo "<center><p>Cedula vacio ó no valido.</p></center>";
 		$error=true;
 	}
 	if (empty($nombre) || is_numeric($nombre)) {
-		echo "<p>Nombre vacio ó no valido</p>";
+		echo "<center><p>Nombre vacio ó no valido</p></center>";
 		$error=true;
 	}
 	if (empty($apellido1) || is_numeric($apellido1)) {
-		echo "<p>Apellido vacio ó no valido</p>";
+		echo "<center><p>Apellido vacio ó no valido</p></center>";
 		$error=true;
 	}
 	if (empty($apellido2) || is_numeric($apellido2)) {
-		echo "<p>Apellido vacio ó no valido</p>";
+		echo "<center><p>Apellido vacio ó no valido</p></center>";
 		$error=true;
 	}
 	if (empty($telefono) || !is_numeric($telefono)) {
-		echo "<p>Telefono vacio ó no valido</p>";
+		echo "<center><p>Telefono vacio ó no valido</p></center>";
 		$error=true;
 	}
 	if ($error)
 	{
-		echo"<button onclick=location.href='insertar_empleado.html'>Pagina anterior</button>";
+            ?>
+                <center><input class="btn btn-primary" onclick=location.href='../HTML/insertar_empleado.html' type="submit" name="Volver" value="Volver" /></p></center>
+            <?php
 	}else
 	{
 		require('../conexion.php');

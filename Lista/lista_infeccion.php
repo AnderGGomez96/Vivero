@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
+            <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 		<title>Lista de cultivos infectados</title>
 	</head>
 	<body>
-
-
-		<div>
-			<table border="1">
-				<tr align="center"><td><label>Codigo infeccion</label></td>
-					<td><label>Codigo cultivo</label></td>
-					<td><label>Codigo enfermedad</label></td></tr>
-
+                    <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>Codigo Infeccion</center></th>
+                                <th class="thead-dark" scope="col"><center>Codigo Cultivo</center></th>
+                                <th class="thead-dark" scope="col"><center>Codigo Enfermedad</center></th>
+                            </tr>
+                            </thead>
 					<?php
 						require('../conexion.php');
 						$query="SELECT * FROM infeccion WHERE `codigo_cultivo`"
@@ -25,13 +27,18 @@
 							echo "<td>".$extraido['codigo_enfermedad']."</td></tr>";
 						}
 					?>
-			</table>
-			<input type="button" name="insert" value="Insertar" onclick="window.location.href='../Insertar/insertar_infeccion.php'">
-			<input type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/eliminarInfeccion.php'">
-
-			<input type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_infeccion.php'">
- 
-			<input type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
+                    </table>
+                    <center> <table align="center">
+                        <BR>
+                        <tr>
+			<input class="btn btn-primary" type="button" name="insert" value="Insertar" onclick="window.location.href='../Insertar/insertar_infeccion.php'">
+			<input class="btn btn-danger" type="button" name="delete" value="Eliminar" onclick="window.location.href='../Eliminar/eliminarInfeccion.php'">
+			<input class="btn btn-success" type="button" name="update" value="Actualizar" onclick="window.location.href='../Actualizar/actualizar_infeccion.php'">
+			<input class="btn btn-info" type="button" name="volver" value="Volver" onclick="window.location.href='../index.php'">
 		</div>
+            </tr>
+		</table>
+                </center>
+            </label></center>
 	</body>
 </html>

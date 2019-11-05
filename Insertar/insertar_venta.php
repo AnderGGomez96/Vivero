@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insercion de ventas</title>
 </head>
 <body>
@@ -21,29 +23,37 @@
                     . "VALUES ('$nombre',$codPlanta,$compra)";
                 
                 if ($link->query($sql) === TRUE) {
-                    echo "<p>Nuevo registro creado satisfactoriamente</p>";
-                    echo"<p><button onclick=location.href='../Lista/lista_ventas.php'>Lista ventas</button></p>";
+                    echo "<center><p>Nuevo registro creado satisfactoriamente</p></center>";
+                    ?>
+                    <center><td><input type="button" name="insertar" value="Lista ventas" class="btn btn-primary" onclick="window.location.href='../Lista/lista_ventas.php'"></td></center>
+                    <?php
                 } else {
                     echo "Error: " . $sql . "<br>" . $link->error;
                 }
             }else{
-               echo "La cantidad es mayor a la disponible, por favor intente con una menor cantidad";
-               echo"<p><button onclick=location.href='../Lista/lista_ventas.php'>Lista ventas</button></p>";
+               echo "<center>La cantidad es mayor a la disponible, por favor intente con una menor cantidad</center>";
+               ?>
+                <center><td><input type="button" name="insertar" value="Lista ventas" class="btn btn-primary" onclick="window.location.href='../Lista/lista_ventas.php'"></td></center>
+               <?php
             }
             
             
         }else{
             ?>
-                <table border="1">
-                <tr align="center"><td><label>Codigo planta</label></td>
-                    <td><label>Nombre</label></td>
-                    <td><label>Genero</label></td>
-                    <td><label>Familia</label></td>
-                    <td><label>Tipo de planta</label></td>
-                    <td><label>Cantidad semilla</label></td>
-                    <td><label>Cantidad flores</label></td>
-                    <td><label>Precio venta</label></td>
-
+            <center><label>
+                    <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>CODIGO PLANTA</center></th>
+                                <th class="thead-dark" scope="col"><center>NOMBRE</center></th>
+                                <th class="thead-dark" scope="col"><center>GENERO</center></th>
+                                <th class="thead-dark" scope="col"><center>FAMILIA</center></th>
+                                <th class="thead-dark" scope="col"><center>TIPO DE PLANTA</center></th>
+                                <th class="thead-dark" scope="col"><center>CANTIDAD SEMILLA</center></th>
+                                <th class="thead-dark" scope="col"><center>CANTIDAD FLORES</center></th>
+                                <th class="thead-dark" scope="col"><center>PRECIO VENTA</center></th>
+                            </tr>
+                            </thead> 
             <?php
 
                     require('../conexion.php');
@@ -63,10 +73,31 @@
             ?>
                     
                     </table>
+                 
+                <div class="container text-center">
+                <label>
                 <form method="post" action="insertar_venta.php">
-                    <p>Nombre comprador: <input type="name" name="nombre"></p>
-                    <tr><td>Codigo planta: </td>
-                        <td><select name="codPlanta">
+                    <center>
+                        <table>
+                            <tr>
+                                <div  class="form-group">
+                                    <td width="50%"><label>NOMBRE COMPRADOR</label></td>
+                                    <td width="50%"><input type="name" name="nombre" class="form-control" placeholder="Nombre Comprador"></td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div  class="form-group">
+                                    <td width="50%"><label>UNIDADES COMPRA</label></td>
+                                    <td width="50%"><input type="number" name="compra" class="form-control" placeholder="UNIDADES A COMPAR"></td>
+                                </div>
+                            </tr>                   
+                            <tr>
+                                <div  class="form-group">
+                                    <td width="50%"><label>CODIGO PLANTA</label></td>
+                                </div>
+                            </tr>
+                        </table>
+                        <td><select class="form-control" name="codPlanta">
                             <?php    
                                 require('../conexion.php');
                                 $query= "SELECT `codigo_planta`"
@@ -79,9 +110,8 @@
                                 }
                             ?>
                         </select></td></tr>
-                    <p>Unidades compra: <input type="number" name="compra"></p>
-                    <br/>
-                        <p><input type="submit" name="agregar" value="Agregar venta" /></p>
+                    <br>
+                     <p><input class="btn btn-primary" type="submit" name="agregar" value="Agregar venta" /></p>
                 </form>
         <?php
         }

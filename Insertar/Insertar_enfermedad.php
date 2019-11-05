@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insertar enfermedad</title>
 </head>
 <body>
@@ -10,12 +12,14 @@
 	$error=false;
 /*Validaciones*/
 	if (empty($enfermedad) || is_numeric($enfermedad)) {
-		echo "<p>Enfermedad vacia ó no valida.</p>";
+		echo "<center><p>Enfermedad vacia ó no valida.</p></center>";
 		$error=true;
 	}
 	if ($error)
 	{
-		echo"<button onclick=location.href='../HTML/insertar_enfermedad.html'>Pagina anterior</button>";
+            ?>
+            <center><input class="btn btn-primary" onclick=location.href='../HTML/insertar_enfermedad.html' type="submit" name="Volver" value="Volver" /></p></center>
+            <?php
 	}else
 	{
 		require('../conexion.php');

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0">
+                <link rel="stylesheet" href="../css/bootstrap.min.css">
 	<title>Insercion de infeccion</title>
 </head>
 <body>
@@ -25,18 +27,23 @@
                     . "AND `codigo_enfermedad`='$Enfermedad'";
             }
             if ($link->query($sql) === TRUE) {
-                 echo "<p>Nuevo registro creado satisfactoriamente</p>";
-                echo"<p><button onclick=location.href='../Lista/lista_infeccion.php'>Volver</button></p>";
+                 echo "<center><p>Nuevo registro creado satisfactoriamente</p></center>";
+                 ?>
+<center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='../Lista/lista_infeccion.php'"></td></center>
+                <?php
             } else {
                 echo "Error: " . $sql . "<br>" . $link->error;
             }
         }else{
             ?>
-            <tr><td>Cultivo </td>
-                <table border="1">
-                    <tr align="center"><td><label>Codigo cultivo</label></td>
-                    </tr>
-
+            <center><label>
+            <center><tr><p class="h2">Cultivo </p><center>
+                    <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>CODIGO CULTIVO</center></th>
+                            </tr>
+                            </thead>  
                     <?php
                     require('../conexion.php');
                     $query="SELECT `codigo_cultivo` FROM `cultivo` WHERE `muerte` = 0 ORDER BY `codigo_cultivo`";
@@ -46,11 +53,16 @@
                         }
                     ?>
                 </table>
-                <tr><td>Enfermedad </td>
-                <table border="1">
-                    <tr align="center"><td><label>Enfermedad</label>
-                        <td><label>Codigo</label></td></td>
-                    </tr>
+                    </label></center>
+                <label>
+                    <tr><p class="h2">Enfermedad </p>
+                    <table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>ENFERMEDAD</center></th>
+                                <th class="thead-dark" scope="col"><center>CODIGO</center></th>
+                            </tr>
+                            </thead>     
 
                     <?php
                     require('../conexion.php');
@@ -62,10 +74,12 @@
                         }
                     ?>
                 </table>
+                </label>
                 <form method="post" action="insertar_infeccion.php">
-
+                    
                     <tr><td>Codigo cultivo: </td>
-                        <td><select name="codCul">
+                        
+                        <td><select class="form-control" name="codCul">
                             <?php    
                                 $query= "SELECT `codigo_cultivo`"
                                         . " FROM `cultivo` WHERE `muerte` = 0 "
@@ -79,7 +93,7 @@
                         </select></td></tr>
                     <br/>
                     <tr><td>Enfermedad: </td>
-                        <td><select name="codEnfermedad">
+                        <td><select class="form-control" name="codEnfermedad">
                             <?php
                                 require ('../conexion.php');
                                 $query= "SELECT `codigo_enfermedad` FROM `enfermedad` WHERE `eliminar` = 0";
@@ -90,7 +104,7 @@
                                 }
                             ?>
                         </select></td></tr>
-                        <p><input type="submit" name="insertar" value="Insertar" /></p>
+                        <p><input class="btn btn-primary" type="submit" name="insertar" value="Insertar" /></p>
                 </form>
         <?php
         }
