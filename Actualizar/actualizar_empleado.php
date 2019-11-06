@@ -89,7 +89,7 @@
                    <tr>
                     <div  class="form-group">
                         <td width="50%">CEDULA</td>
-                        <td width="50%"><input type="number" name="cedula" class="form-control" placeholder="Cedula"></td>
+                        <td width="50%"><input min="0" type="number" name="cedula" class="form-control" placeholder="Cedula"></td>
                     </div>
                     </tr>
                     <tr>
@@ -113,7 +113,7 @@
                     <tr>
                     <div  class="form-group">
                         <td width="50%">TELEFONO</td>
-                        <td width="50%"><input type="number" name="telefono" class="form-control" placeholder="Telefono"></td>
+                        <td width="50%"><input min="0" type="number" name="telefono" class="form-control" placeholder="Telefono"></td>
                     </div>
                     </tr>
                 </table>

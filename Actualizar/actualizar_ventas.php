@@ -120,7 +120,7 @@
                         <tr>
                             <div  class="form-group">
                                 <td width="50%"><label>UNIDADES</label></td>
-                                <td width="50%"><input type="number" name="unidades" class="form-control" placeholder="Unidades"></td>
+                                <td width="50%"><input min="0" type="number" name="unidades" class="form-control" placeholder="Unidades"></td>
                             </div>
                         </tr>
 		</table>

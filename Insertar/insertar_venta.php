@@ -96,7 +96,7 @@
                             <tr>
                                 <div  class="form-group">
                                     <td width="50%"><label>UNIDADES COMPRA</label></td>
-                                    <td width="50%"><input type="number" name="compra" class="form-control" placeholder="UNIDADES A COMPAR"></td>
+                                    <td width="50%"><input min="0" type="number" name="compra" class="form-control" placeholder="UNIDADES A COMPAR"></td>
                                 </div>
                             </tr>                   
                             <tr>
