@@ -34,10 +34,10 @@
                                         <td><input type="button" name="plantas_cultivo" value="Plantas en cultivo" class="btn btn-primary" onclick="window.location.href='Consulta/plantas_cultivo.php'"></td>
                                         <td><input type="button" name="infeccion_cultivo" value="cultivos infectados" class="btn btn-primary" onclick="window.location.href='Consulta/infeccion_cultivo.php'"></td>
                                         <td><input type="button" name="labores_empleado" value="labores de los empleados" class="btn btn-primary" onclick="window.location.href='Consulta/labores_empleado.php'"></td>
+                                        <td><input type="button" name="terminar_cultivo" value="Terminar cultivo" class="btn btn-primary" onclick="window.location.href='Terminar/terminar_cultivo.php'"></td>
 				</tr>
 			</table>
                    </div>
 				
 	</body>
 </html>
-		
