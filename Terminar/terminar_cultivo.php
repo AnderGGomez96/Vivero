@@ -60,14 +60,14 @@
 	                    <table align="center" class="table">
 	                        <thead class="thead-dark">
 	                            <tr>
-	                                <th class="thead-dark" scope="col"><center>Codigo cultivo</center></th>
-	                                <th class="thead-dark" scope="col"><center>Codigo Empleado</center></th>
-	                                <th class="thead-dark" scope="col"><center>Codigo Planta</center></th>
-	                                <th class="thead-dark" scope="col"><center>Cantidad Cultivo</center></th>
-	                                <th class="thead-dark" scope="col"><center>Humedad Cultivo</center></th>
-	                                <th class="thead-dark" scope="col"><center>Edad Cultivo</center></th>
-	                                <th class="thead-dark" scope="col"><center>Dias abono</center></th>
-	                                <th class="thead-dark" scope="col"><center>Crecimiento</center></th>
+	                               <th  class = " thead-dark "  scope = " col " > <centro > Codigo cultivo </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Codigo Empleado </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Codigo Planta </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <center > Cantidad Cultivo </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Humedad Cultivo (%)</center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Edad Cultivo (dias)</center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <center > Dias abono </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Crecimiento (mm) </center > </th >
 	                            </tr>
 	                            </thead>
 						<?php

@@ -112,10 +112,10 @@
                                 <th  class = " thead-dark "  scope = " col " > <centro > Codigo Empleado </center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <centro > Codigo Planta </center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <center > Cantidad Cultivo </center > </th >
-                                <th  class = " thead-dark "  scope = " col " > <centro > Humedad Cultivo </center > </th >
-                                <th  class = " thead-dark "  scope = " col " > <centro > Edad Cultivo </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Humedad Cultivo (%)</center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Edad Cultivo (dias)</center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <center > Dias abono </center > </th >
-                                <th  class = " thead-dark "  scope = " col " > <centro > Crecimiento </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Crecimiento (mm) </center > </th >
                             </tr >
                             </thead >
 					<?php

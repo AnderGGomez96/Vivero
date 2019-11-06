@@ -66,6 +66,33 @@
 	else
 	{
 	?>
+	<table align="center" class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="thead-dark" scope="col"><center>Codigo</center></th>
+                                <th class="thead-dark" scope="col"><center>Cedula</center></th>
+                                <th class="thead-dark" scope="col"><center>Nombre</center></th>
+                                <th class="thead-dark" scope="col"><center>Primer Apellido</center></th>
+                                <th class="thead-dark" scope="col"><center>Segundo Apellido</center></th>
+                                <th class="thead-dark" scope="col"><center>Telefono</center></th>
+                            </tr>
+                            </thead>
+					<?php
+
+						require('../conexion.php');
+						$query="SELECT * FROM empleado WHERE eliminar = 0 ORDER BY codigo_empleado";
+						$resultado=mysqli_query($link,$query);
+
+						while ($extraido= mysqli_fetch_array($resultado)) {
+							echo "<tr align='center'><td>".$extraido['codigo_empleado']."</td>";
+							echo "<td>".$extraido['cedula']."</td>";
+							echo "<td>".$extraido['nombre']."</td>";
+							echo "<td>".$extraido['apellido1']."</td>";
+							echo "<td>".$extraido['apellido2']."</td>";
+							echo "<td>".$extraido['telefono']."</td></tr>";
+						}
+					?>
+            </table>
 	<form method="post" action="actualizar_empleado.php">
             <center>
                 <table>
