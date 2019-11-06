@@ -13,16 +13,24 @@
             $compra=$_POST["compra"];
             $nombre=$_POST["nombre"];
             require('../conexion.php');
-            
-            $sql="SELECT `nombre` FROM `planta` WHERE `cantidad_semilla` > $compra+1 AND `codigo_planta`=$codPlanta";
-            
+
+            $sql="SELECT `nombre` FROM `planta` WHERE (`cantidad_flor` >= $compra) AND `codigo_planta`=$codPlanta";
             $result = mysqli_query($link, $sql);
             $row = mysqli_fetch_array($result, MYSQLI_NUM);
-            if(is_null($row)){
+            if(!is_null($row)){
                 $sql="INSERT INTO ventas (nombre,codigo_planta,unidades)"
                     . "VALUES ('$nombre',$codPlanta,$compra)";
                 
+                
                 if ($link->query($sql) === TRUE) {
+                } else {
+                    echo "Error: " . $sql . "<br>" . $link->error;
+                }
+                
+                $sql="UPDATE `planta` SET `cantidad_flor`=(`cantidad_flor`-$compra) WHERE `codigo_planta`=$codPlanta";
+                
+                if ($link->query($sql) === TRUE) {
+                    
                     echo "<center><p>Nuevo registro creado satisfactoriamente</p></center>";
                     ?>
                     <center><td><input type="button" name="insertar" value="Lista ventas" class="btn btn-primary" onclick="window.location.href='../Lista/lista_ventas.php'"></td></center>

@@ -25,7 +25,7 @@
 					<?php
 
 						require('../conexion.php');
-						$query="SELECT * FROM cultivo WHERE (muerte = 0 AND termino=0) ORDER BY codigo_cultivo";
+						$query="SELECT * FROM cultivo WHERE muerte = 0 ORDER BY codigo_cultivo";
 						$resultado=mysqli_query($link,$query);
 
 						while ($extraido= mysqli_fetch_array($resultado)) {
@@ -43,10 +43,9 @@
                     <center> <table align="center">
 				<BR>
 				<tr>
-                                        <input type="button" name="insert" value=" Insertar " class="btn btn-primary" onclick="window.location.href='../HTML/insertar_cultivo.php'">
+                                        <input type="button" name="insert" value=" Insertar " class="btn btn-primary" onclick="window.location.href='../HTML/insertar_cultivo.html'">
                                         <input type="button" name="delete" value=" Eliminar " class="btn btn-danger" onclick="window.location.href='../Eliminar/eliminarCultivo_Select.php'">
                                         <input type="button" name="delete" value=" Actualizar " class="btn btn-success" onclick="window.location.href='../Actualizar/actualizar_cultivo.php'">
-                                        <input type="button" name="delete" value=" Terminar " class="btn btn-success" onclick="window.location.href='../Terminar/terminar_cultivo.php'">
                                         <input type="button" name="volver" value=" Volver " class="btn btn-info" onclick="window.location.href='../index.php'">
 				</tr>
 			</table>

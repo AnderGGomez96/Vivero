@@ -104,39 +104,6 @@
 		else
 		{
 		?>
-		<div>
-                    <table align="center" class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th class="thead-dark" scope="col"><center>Codigo cultivo</center></th>
-                                <th class="thead-dark" scope="col"><center>Codigo Empleado</center></th>
-                                <th class="thead-dark" scope="col"><center>Codigo Planta</center></th>
-                                <th class="thead-dark" scope="col"><center>Cantidad Cultivo</center></th>
-                                <th class="thead-dark" scope="col"><center>Humedad Cultivo</center></th>
-                                <th class="thead-dark" scope="col"><center>Edad Cultivo</center></th>
-                                <th class="thead-dark" scope="col"><center>Dias abono</center></th>
-                                <th class="thead-dark" scope="col"><center>Crecimiento</center></th>
-                            </tr>
-                            </thead>
-					<?php
-
-						require('../conexion.php');
-						$query="SELECT * FROM cultivo WHERE (muerte = 0 AND termino=0) ORDER BY codigo_cultivo";
-						$resultado=mysqli_query($link,$query);
-
-						while ($extraido= mysqli_fetch_array($resultado)) {
-							echo "<tr align='center'><td>".$extraido['codigo_cultivo']."</td>";
-							echo "<td>".$extraido['codigo_empleado']."</td>";
-							echo "<td>".$extraido['codigo_planta']."</td>";
-							echo "<td>".$extraido['cantidad_cultivo']."</td>";
-							echo "<td>".$extraido['humedad_cultivo']."</td>";
-							echo "<td>".$extraido['edad_cultivo']."</td>";
-							echo "<td>".$extraido['dias_abono']."</td>";
-							echo "<td>".$extraido['crecimiento']."</td>";
-						}
-					?>
-			</table>
-		</div>
 		<form method="post" action="actualizar_cultivo.php">
                     <center>
 			<table>

@@ -14,6 +14,7 @@
                                         <th class="thead-dark" scope="col"><center>NOMBRE</center></th>
                                         <th class="thead-dark" scope="col"><center>CODIGO PLANTA</center></th>
                                         <th class="thead-dark" scope="col"><center>UNIDADES</center></th>
+                                        <th class="thead-dark" scope="col"><center>VALOR VENTA</center></th>
                                     </tr>
                                 </thead>              
 					<?php
