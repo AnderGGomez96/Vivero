@@ -25,7 +25,12 @@
 							echo "<tr align='center'><td>".$extraido['codigo_ventas']."</td>";
 							echo "<td>".$extraido['nombre']."</td>";
 							echo "<td>".$extraido['codigo_planta']."</td>";
-							echo "<td>".$extraido['unidades']."</td></tr>";
+							echo "<td>".$extraido['unidades']."</td>";
+							$sql="SELECT precio_venta FROM planta WHERE codigo_planta=$extraido[codigo_planta] ORDER BY codigo_planta";
+							$resul=mysqli_query($link,$sql);
+							$extracto=mysqli_fetch_array($resul);
+							$op=$extracto['precio_venta']*$extraido['unidades'];
+							echo "<td>".$op."</td></tr>";
 						}
 					?>
 			</table>
