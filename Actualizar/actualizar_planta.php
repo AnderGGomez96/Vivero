@@ -65,7 +65,7 @@
 			if ($link->query($sql) === TRUE) {
 			    echo "<center><p>Registro actualizado satisfactoriamente</p></center>";
                             ?>
-                            <center><td><input type="button" name="volver" value="Actualice una nuea planta" class="btn btn-success" onclick="window.location.href='actualizar_cultivo.php'"></td></center>
+                            <center><td><input type="button" name="volver" value="Actualice una nueva planta" class="btn btn-success" onclick="window.location.href='actualizar_planta.php'"></td></center>
                             <?php
                         } else {
 			    echo "Error: " . $sql . "<br>" . $link->error;
@@ -75,6 +75,39 @@
 	else
 	{
 	?>
+	<div>
+                     <table align="center" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="thead-dark" scope="col"><center>CODIGO PLANTA</center></th>
+                                        <th class="thead-dark" scope="col"><center>NOMBRE</center></th>
+                                        <th class="thead-dark" scope="col"><center>GENERO</center></th>
+                                        <th class="thead-dark" scope="col"><center>FAMILIA</center></th>
+                                        <th class="thead-dark" scope="col"><center>TIPO DE PLANTA</center></th>
+                                        <th class="thead-dark" scope="col"><center>CANTIDAD SEMILA</center></th>
+                                        <th class="thead-dark" scope="col"><center>CANTIDAD FLORES</center></th>
+                                        <th class="thead-dark" scope="col"><center>PRECIO VENTA</center></th>
+                                    </tr>
+                                </thead>
+					<?php
+
+						require('../conexion.php');
+						$query="SELECT * FROM planta WHERE eliminar = 0 ORDER BY codigo_planta";
+						$resultado=mysqli_query($link,$query);
+
+						while ($extraido= mysqli_fetch_array($resultado)) {
+							echo "<tr align='center'><td>".$extraido['codigo_planta']."</td>";
+							echo "<td>".$extraido['nombre']."</td>";
+							echo "<td>".$extraido['genero']."</td>";
+							echo "<td>".$extraido['familia']."</td>";
+							echo "<td>".$extraido['tipo_planta']."</td>";
+							echo "<td>".$extraido['cantidad_semilla']."</td>";
+							echo "<td>".$extraido['cantidad_flor']."</td>";
+							echo "<td>".$extraido['precio_venta']."</td></tr>";
+						}
+					?>
+			</table>
+		</div>
 	<form method="post" action="actualizar_planta.php">
 		<center>
 		<table>
