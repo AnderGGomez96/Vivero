@@ -179,9 +179,12 @@
 				</tr>
 			</table>
                         <br>
+                        <center> <table align="center">
+				<BR>
+				<tr>
 			<input class="btn btn-primary" type="submit" name="submit" value="Actualizar">
 		</form>
-		<button class="btn btn-success" onclick=location.href='../Lista/lista_cultivo.php'>Lista Cultivo</button>
+                <center><td><input type="button" name="volver" value="Lista cultivo" class="btn btn-success" onclick="window.location.href='../Lista/lista_cultivo.php'"></td></center>
 		<?php
 		}
 		?>

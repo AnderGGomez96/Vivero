@@ -15,30 +15,34 @@
 		$error=false;
 		/*Validaciones*/
 		if (empty($codigo_labor_empleado)) {
-			echo "<p>codigo_labor_empleado vacio ó no valido.</p>";
+			echo "<center><p>codigo_labor_empleado vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($codigo_empleado) || !is_numeric($codigo_empleado)) {
-			echo "<p>codigo empleado vacio ó no valido.</p>";
+			echo "<center><p>codigo empleado vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($codigo_labor) || !is_numeric($codigo_labor)) {
-			echo "<p>codigo_laborvacio ó no valido</p>";
+			echo "<center><p>codigo_laborvacio ó no valido</p></center>";
 			$error=true;
 		}
 		if ($error)
 		{
-			echo"<button onclick=location.href='actualizar_labores_empleado.php'>Pagina anterior</button>";
-		}else
+                    ?>
+                    <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-success" onclick="window.location.href='actualizar_labores_empleado.php'"></td></center>
+                    <?php
+                }else
 		{
 			require('../conexion.php');
 
 			$sql="UPDATE labores_empleados SET codigo_empleado=$codigo_empleado, codigo_labor=$codigo_labor WHERE codigo_labor_empleado=$codigo_labor_empleado";
 
 			if ($link->query($sql) === TRUE) {
-			    echo "<p>Registro actualizado satisfactoriamente</p>";
-			    echo"<p><button onclick=location.href='actualizar_labores_empleado.php'>Actualice un nuevo empleado</button></p>";
-			} else {
+			    echo "<center><p>Registro actualizado satisfactoriamente</p>";
+                            ?>
+                            <center><td><input type="button" name="volver" value="Actualice un nuevo empleado" class="btn btn-success" onclick="window.location.href='actualizar_labores_empleado.php'"></td></center>
+			<?php
+                        } else {
 			    echo "Error: " . $sql . "<br>" . $link->error;
 			}
 		}
@@ -47,11 +51,12 @@
 	{
 	?>
 	<form method="post" action="actualizar_labores_empleado.php">
+		<center>
 		<table>
 			<tr>
 				<td>Codigo labor empleado</td>
 				<td>
-					<select name="codigo_labor_empleado">
+					<select class="form-control" name="codigo_labor_empleado">
 					<?php
 						require ('../conexion.php');
 						$query= "SELECT * FROM labores_empleados WHERE eliminar = 0 ORDER BY codigo_labor_empleado";
@@ -67,7 +72,7 @@
 			</tr>
 			<tr><td>Codigo empleado:</td>
 				<td>
-					<select name="codigo_empleado">
+					<select class="form-control" name="codigo_empleado">
 					<?php
 						require ('../conexion.php');
 						$query= "SELECT * FROM empleado WHERE eliminar = 0 ORDER BY codigo_empleado";
@@ -83,7 +88,7 @@
 			</tr>
 			<tr><td>Codigo labor:</td>
 				<td>
-					<select name="codigo_labor">
+					<select class="form-control" name="codigo_labor">
 					<?php
 						require ('../conexion.php');
 						$query= "SELECT * FROM labores WHERE eliminar = 0 ORDER BY codigo_labor";
@@ -98,9 +103,9 @@
 				</td>
 			</tr>
 		</table>
-		<input type="submit" name="submit" value="Actualizar">
+		<input class="btn btn-primary" type="submit" name="submit" value="Actualizar">
 	</form>
-	<button onclick=location.href='../Lista/lista_labores_empleado.php'>Lista Labores-Empleado</button>
+        <center><td><input type="button" name="volver" value="Lista Labores-Empleado" class="btn btn-success" onclick="window.location.href='../Lista/lista_labores_empleado.php'"></td></center>
 	<?php
 	}
 	?>

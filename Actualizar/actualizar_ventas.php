@@ -16,24 +16,26 @@
 		$error=false;
 		/*Validaciones*/
 		if (empty($codigo_ventas)) {
-			echo "<p>codigo_ventas cliente vacio ó no valido.</p>";
+			echo "<center><p>codigo_ventas cliente vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($nombre) || is_numeric($nombre)) {
-			echo "<p>nombre cliente vacio ó no valido.</p>";
+			echo "<center><p>nombre cliente vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($codigo_planta) || !is_numeric($codigo_planta)) {
-			echo "<p>codigo planta vacio ó no valido</p>";
+			echo "<center><p>codigo planta vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($unidades) || !is_numeric($unidades) || $unidades<0) {
-			echo "<p>unidades vacio ó no valido</p>";
+			echo "<center><p>unidades vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if ($error)
 		{
-			echo"<button onclick=location.href='actualizar_ventas.php'>Pagina anterior</button>";
+                    ?>
+                        <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-success" onclick="window.location.href='actualizar_ventas.php'"></td></center>
+                    <?php
 		}else
 		{
 			require('../conexion.php');
@@ -42,20 +44,24 @@
 			$resultado= mysqli_query($link,$validar);
 			$extraido=mysqli_fetch_array($resultado);
 			if ($unidades >$extraido['cantidad_flor']) {
-				echo "<p>La cantidad de unidades de la planta es mayor a la disponible : $extraido[cantidad_flor]</p>";
-				echo"<p><button onclick=location.href='actualizar_ventas.php'>Pagina anterior</button></p>";
+				echo "<center><p>La cantidad de unidades de la planta es mayor a la disponible : $extraido[cantidad_flor]</p></center>";
+                                ?>
+                                    <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-success" onclick="window.location.href='actualizar_ventas.php'"></td></center>
+                                <?php
 			}else
 			{
 				$sql="UPDATE ventas SET nombre='$nombre', codigo_planta=$codigo_planta,unidades=$unidades WHERE codigo_ventas=$codigo_ventas";
 
 
 				if ($link->query($sql) === TRUE) {
-				    echo "<p>Registro actualizado satisfactoriamente</p>";
+				    echo "<center><p>Registro actualizado satisfactoriamente</p></center>";
 				    $nuevo=$extraido['cantidad_flor']-$unidades;
 				    $sql="UPDATE planta SET cantidad_flor=$nuevo WHERE codigo_planta=$codigo_planta";
 				    if ($link->query($sql) === TRUE)
 				    {
-				    	echo"<p><button onclick=location.href='actualizar_ventas.php'>Actualice una nueva venta</button></p>";
+                                        ?>
+                                        <center><td><input type="button" name="volver" value="Actualice una nueva venta" class="btn btn-success" onclick="window.location.href='actualizar_ventas.php'"></td></center>
+                                        <?php
 				    }else {
 				    echo "Error: " . $sql . "<br>" . $link->error;
 				}
@@ -70,11 +76,12 @@
 	{
 	?>
 	<form method="post" action="actualizar_ventas.php">
+		<center>
 		<table>
 			<tr>
-				<td>Codigo venta</td>
+				<td>CODIGO VENTA</td>
 				<td>
-					<select name="codigo_ventas">
+					<select class="form-control" name="codigo_ventas">
 					<?php
 						require ('../conexion.php');
 						$query= "SELECT * FROM ventas ORDER BY codigo_ventas";
@@ -88,12 +95,15 @@
 					</select>
 				</td>
 			</tr>
-			<tr><td>Nombre cliente:</td>
-				<td><input type="name" name="nombre"></td>
-			</tr>
-				<tr><td>codigo_planta:</td>
+                        <tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>NOMBRE CLIENTE</label></td>
+                                <td width="50%"><input type="name" name="nombre" class="form-control" placeholder="Nombre Cliente"></td>
+                            </div>
+                        </tr>
+				<tr><td>CODIGO PLANTA</td>
 				<td>
-					<select name="codigo_planta">
+					<select class="form-control" name="codigo_planta">
 					<?php
 						require ('../conexion.php');
 						$query= "SELECT * FROM planta WHERE eliminar=0 ORDER BY codigo_planta";
@@ -107,13 +117,18 @@
 					</select>
 				</td>
 			</tr>
-				<tr><td>Unidades:</td>
-				<td><input type="number" name="unidades"></td>
-			</tr>
+                        <tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>UNIDADES</label></td>
+                                <td width="50%"><input type="number" name="unidades" class="form-control" placeholder="Unidades"></td>
+                            </div>
+                        </tr>
 		</table>
-		<input type="submit" name="submit" value="Actualizar">
+                    <br>
+		<input class="btn btn-primary" type="submit" name="submit" value="Actualizar">
+                </center>
 	</form>
-	<button onclick=location.href='../Lista/lista_ventas.php'>Lista Cultivo</button>
+        <center><td><input type="button" name="volver" value="Lista ventas" class="btn btn-success" onclick="window.location.href='../Lista/lista_ventas.php'"></td></center>
 	<?php
 	}
 	?>

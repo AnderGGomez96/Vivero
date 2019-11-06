@@ -15,20 +15,22 @@
 		$error=false;
 		/*Validaciones*/
 		if (empty($codigo_enfermedad)) {
-			echo "<p>codigo_enfermedad vacio ó no valido.</p>";
+			echo "<center><p>codigo_enfermedad vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($nombre_enfermedad) || is_numeric($nombre_enfermedad)) {
-			echo "<p>codigo enfermedad vacio ó no valido.</p>";
+			echo "<center><p>codigo enfermedad vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($tratamiento) || is_numeric($tratamiento)) {
-			echo "<p>tratamiento vacio ó no valido</p>";
+			echo "<center><p>tratamiento vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if ($error)
 		{
-			echo"<button onclick=location.href='actualizar_enfermedad.php'>Pagina anterior</button>";
+                    ?>
+                        <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-success" onclick="window.location.href='actualizar_enfermedad.php'"></td></center>
+                    <?php   
 		}else
 		{
 			require('../conexion.php');
@@ -36,8 +38,10 @@
 			$sql="UPDATE enfermedad SET nombre_enfermedad='$nombre_enfermedad', tratamiento='$tratamiento' WHERE codigo_enfermedad=$codigo_enfermedad";
 
 			if ($link->query($sql) === TRUE) {
-			    echo "<p>Registro actualizado satisfactoriamente</p>";
-			    echo"<p><button onclick=location.href='actualizar_enfermedad.php'>Actualice una nueva enfermedad</button></p>";
+			    echo "<center><p>Registro actualizado satisfactoriamente</p></center>";
+                            ?>
+                            <center><td><input type="button" name="volver" value="Actualice una nueva enfermedad" class="btn btn-success" onclick="window.location.href='actualizar_enfermedad.php'"></td></center>
+                            <?php
 			} else {
 			    echo "Error: " . $sql . "<br>" . $link->error;
 			}
@@ -47,11 +51,12 @@
 	{
 	?>
 	<form method="post" action="actualizar_enfermedad.php">
+            <center>
 		<table>
 			<tr>
 				<td>Codigo enfermedad</td>
 				<td>
-					<select name="codigo_enfermedad">
+					<select class="form-control" name="codigo_enfermedad">
 					<?php
 						require ('../conexion.php');
 						$query= "SELECT * FROM enfermedad WHERE eliminar = 0 ORDER BY codigo_enfermedad";
@@ -65,20 +70,19 @@
 					</select>
 				</td>
 			</tr>
-			<tr><td>Nombre enfermedad:</td>
-				<td>
-					<input type="name" name="nombre_enfermedad">
-				</td>
-			</tr>
-			<tr><td>tratamiento:</td>
-				<td>
-					<input type="text" name="tratamiento">
-				</td>
-			</tr>
+                                </tr>
+					<tr><td>Nombre enfermedad  </td>
+					<td><input class="form-control" type="name" name="nombre_enfermedad"></td>
+				</tr>
+                                </tr>
+					<tr><td>Tratamiento </td>
+					<td><input class="form-control" type="text" name="tratamiento"></td>
+				</tr>
 		</table>
-		<input type="submit" name="submit" value="Actualizar">
+                <br>
+		<input class="btn btn-primary" type="submit" name="submit" value="Actualizar">
 	</form>
-	<button onclick=location.href='../Lista/lista_enfermedad.php'>Lista enfermedad</button>
+        <center><td><input type="button" name="volver" value="Lista enfermedad" class="btn btn-success" onclick="window.location.href='../Lista/lista_enfermedad.php'"></td></center>
 	<?php
 	}
 	?>

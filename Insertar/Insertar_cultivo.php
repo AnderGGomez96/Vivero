@@ -7,7 +7,6 @@
 </head>
 <body>
 	<?php 
-	$codCul=$_POST["codigo_cultivo"];
 	$codEmp=$_POST["codigo_empleado"];
 	$codPlanta=$_POST["codigo_planta"];
 	$cantCultivo=$_POST["cantidad_cultivo"];
@@ -17,10 +16,6 @@
         $crecimiento = $_POST["crecimiento"];
 	$error=false;
 /*Validaciones*/
-	if (empty($codCul) || !is_numeric($codCul)) {
-		echo "<center><p>Codigo cultivo vacio ó no valido.</p></center>";
-		$error=true;
-	}
 	if (empty($codEmp) || !is_numeric($codEmp)) {
 		echo "<center><p>Codigo empleado vacio ó no valido</p></center>";
 		$error=true;
@@ -66,22 +61,30 @@
 	}else
 	{
 		require('../conexion.php');
-                $sql = "SELECT `codigo_cultivo` FROM `cultivo` WHERE `codigo_cultivo`=$codCul";
+                $sql = "SELECT `codigo_cultivo` FROM `cultivo` WHERE (`codigo_empleado` = $codEmp AND `codigo_planta` = $codPlanta"
+                            . " AND `cantidad_cultivo`=$cantCultivo AND `humedad_cultivo`=$humCultivo"
+                            . " AND `edad_cultivo`=$edadCultivo AND `dias_abono` = $diasAbono"
+                            . " AND `crecimiento`=$crecimiento)";
                 $result = mysqli_query($link, $sql);
                 $row = mysqli_fetch_array($result, MYSQLI_NUM);
                 if(is_null($row)){
-                    $sql="INSERT INTO cultivo (codigo_cultivo,codigo_empleado,"
+                    $sql="INSERT INTO cultivo (codigo_empleado,"
                             . "codigo_planta,cantidad_cultivo,humedad_cultivo,edad_cultivo,dias_abono,"
                             . "crecimiento,muerte,termino)"
-                            . "VALUES ($codCul,$codEmp,$codPlanta,$cantCultivo,$humCultivo,$edadCultivo,"
+                            . "VALUES ($codEmp,$codPlanta,$cantCultivo,$humCultivo,$edadCultivo,"
                             . "$diasAbono,$crecimiento,0,0)";
                 }else{
                     $sql="UPDATE `cultivo` SET `muerte` = 0,`termino`=0"
-                            . " WHERE `codigo_cultivo` = $codCul";
+                            . " WHERE (`codigo_empleado` = $codEmp AND `codigo_planta` = $codPlanta"
+                            . " AND `cantidad_cultivo`=$cantCultivo AND `humedad_cultivo`=$humCultivo"
+                            . " AND `edad_cultivo`=$edadCultivo AND `dias_abono` = $diasAbono"
+                            . " AND `crecimiento`=$crecimiento)";
                 }
 		if ($link->query($sql) === TRUE) {
-		    echo "<p>Nuevo registro creado satisfactoriamente</p>";
-		    echo"<p><button onclick=location.href='../Lista/lista_cultivo.php'>Cultivos</button></p>";
+		    echo "<center><p>Nuevo registro creado satisfactoriamente</p></center>";
+                    ?>
+                    <center><input class="btn btn-primary" onclick=location.href='../Lista/lista_cultivo.php' type="submit" name="Insertar" value="Cultivos" /></p></center>
+                    <?php
 		} else {
 		    echo "Error: " . $sql . "<br>" . $link->error;
 		}

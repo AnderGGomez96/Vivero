@@ -14,17 +14,19 @@
 		$error=false;
 		/*Validaciones*/
 		if (empty($codigo_labor)) {
-			echo "<p>codigo_labor vacio ó no valido.</p>";
+			echo "<center><p>codigo_labor vacio ó no valido.</p>";
 			$error=true;
 		}
 		if (empty($nombre) || is_numeric($nombre)) {
-			echo "<p>nombre vacio ó no valido.</p>";
+			echo "<center><p>nombre vacio ó no valido.</p>";
 			$error=true;
 		}
 		
 		if ($error)
 		{
-			echo"<button onclick=location.href='actualizar_labores.php'>Pagina anterior</button>";
+                    ?>
+                    <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-success" onclick="window.location.href='actualizar_labores.php'"></td></center>
+                     <?php
 		}else
 		{
 			require('../conexion.php');
@@ -32,9 +34,11 @@
 			$sql="UPDATE labores SET nombre='$nombre' WHERE codigo_labor=$codigo_labor";
 
 			if ($link->query($sql) === TRUE) {
-			    echo "<p>Registro actualizado satisfactoriamente</p>";
-			    echo"<p><button onclick=location.href='actualizar_labores.php'>Actualice una nueva labor</button></p>";
-			} else {
+			    echo "<center><p>Registro actualizado satisfactoriamente</p></center>";
+                            ?>
+                            <center><td><input type="button" name="volver" value="Actualice una nueva labor" class="btn btn-success" onclick="window.location.href='actualizar_labores.php'"></td></center>
+                            <?php
+                        } else {
 			    echo "Error: " . $sql . "<br>" . $link->error;
 			}
 		}
@@ -43,11 +47,12 @@
 	{
 	?>
 	<form method="post" action="actualizar_labores.php">
+		<center>
 		<table>
 			<tr>
 				<td>Codigo labor</td>
 				<td>
-					<select name="codigo_labor">
+					<select class="form-control" name="codigo_labor">
 					<?php
 						require ('../conexion.php');
 						$query= "SELECT * FROM labores WHERE eliminar = 0 ORDER BY codigo_labor";
@@ -60,14 +65,17 @@
 					?>
 					</select>
 				</td>
-			</tr>
-			<tr><td>Nombre</td>
-				<td><input type="name" name="nombre"></td>
-			</tr>
+                                <tr>
+                    <div class="form-group">
+                        <td width="50%"><label>NOMBRE</label></td>
+                        <td width="50%"><input type="name" name="nombre" class="form-control" placeholder="NOMBRE"></td>
+                    </div>
+                </tr>
 		</table>
-		<input type="submit" name="submit" value="Actualizar">
+                    <br>
+		<input class="btn btn-primary" type="submit" name="submit" value="Actualizar">
 	</form>
-	<button onclick=location.href='../Lista/lista_labores.php'>Lista Labores</button>
+        <center><td><input type="button" name="volver" value="Volver" class="btn btn-success" onclick="window.location.href='../Lista/lista_labores.php'"></td></center>
 	<?php
 	}
 	?>

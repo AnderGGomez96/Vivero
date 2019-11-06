@@ -6,7 +6,6 @@
 	<title>Terminar un cultivo.</title>
 </head>
 <body>
-	Terminar un cultivo.
 
 	<?php
 	if (isset($_POST['submit'])) 
@@ -16,16 +15,18 @@
 
 		$error=false;
 		if (empty($codigo_cultivo)) {
-			echo "cultivo no valido";
+			echo "<center>cultivo no valido</center>";
 			$error=true;
 		}
 		if (empty($termino)) {
-			echo "No se actualizara el cultivo";
+			echo "<center>No se actualizara el cultivo</center>";
 			$error=true;
 		}
 		if ($error)
 		{
-			echo"<button onclick=location.href='terminar_cultivo.php'>Pagina anterior</button>";
+                    ?>
+                        <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-success" onclick="window.location.href='terminar_cultivo.php'"></td></center>
+                    <?php
 		}else
 		{
 			require('../conexion.php');
@@ -39,8 +40,10 @@
 				$actualizar_cultivo="UPDATE cultivo SET termino=$termino WHERE codigo_cultivo=$codigo_cultivo"; 
 
 				if ($link->query($actualizar_cultivo)===TRUE) {
-					echo "<p>Registro actualizado satisfactoriamente</p>";
-					echo"<p><button onclick=location.href='terminar_cultivo.php'>Termine un nuevo cultivo</button></p>";
+					echo "<center><p>Registro actualizado satisfactoriamente</p></center>";
+                                        ?>
+                                        <center><td><input type="button" name="volver" value="Termine un nuevo cultivo" class="btn btn-success" onclick="window.location.href='terminar_cultivo.php'"></td></center>
+                                        <?php
 				}else
 				{
 					echo "Error: " . $sql . "<br>" . $link->error;
@@ -50,7 +53,9 @@
 				echo "Error: " . $sql . "<br>" . $link->error;
 			} 
 		if (empty($termino)) {
-			echo "<p>opcion no valida. <button onclick=location.href='terminar_cultivo.php'>Pagina anterior</button></p>";
+                    ?>
+                    <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-success" onclick="window.location.href='terminar_cultivo.php'"></td></center>
+                    <?php
 		}
 	}
         }
@@ -58,11 +63,12 @@
 	{
 	?>
 		<form method="POST" action="terminar_cultivo.php">
-			<table border="1">
-				<tr>
+			<center>
+                        <table>
+			<tr>
 					<td>Codigo cultivo</td>
 					<td>
-						<select name="codigo_cultivo">
+						<select class="form-control" name="codigo_cultivo">
 							<?php
 								require ('../conexion.php');
 								$query= "SELECT * FROM cultivo WHERE termino = 0 ORDER BY codigo_cultivo";
@@ -79,7 +85,7 @@
 				<tr>
 					<td>Terminar cultivo.</td>
 					<td>
-						<select name="termino">
+						<select class="form-control" name="termino">
 
 							<option value="1">Sí.</option>
 							<option value="0">No.</option>
@@ -89,9 +95,10 @@
 					</td>
 				</tr>
 			</table>
-			<input type="submit" name="submit" value="Terminar">
+			<input class="btn btn-primary" type="submit" name="submit" value="Terminar">
+                        </center>
 		</form>
-		<button onclick=location.href='../Lista/lista_cultivo.php'>Lista Cultivo</button>
+                <center><td><input type="button" name="volver" value="Lista Cultivo" class="btn btn-success" onclick="window.location.href='../Lista/lista_cultivo.php'"></td></center>
 	<?php
 	}
 	?>

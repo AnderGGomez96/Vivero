@@ -20,40 +20,42 @@
 		$error=false;
 		/*Validaciones*/
 		if (empty($codigo_planta)) {
-			echo "<p>codigo_planta empleado vacio ó no valido.</p>";
+			echo "<center><p>codigo_planta empleado vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($nombre) || is_numeric($nombre)) {
-			echo "<p>nombre empleado vacio ó no valido.</p>";
+			echo "<center><p>nombre empleado vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($genero) || is_numeric($genero)) {
-			echo "<p>genero planta vacio ó no valido</p>";
+			echo "<center><p>genero planta vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($familia) || is_numeric($familia)) {
-			echo "<p>familia vacio ó no valido</p>";
+			echo "<center><p>familia vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($tipo_planta) || is_numeric($tipo_planta)) {
-			echo "<p>tipo_planta cultivo vacio ó no valido</p>";
+			echo "<center><p>tipo_planta cultivo vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($cantidad_semilla) || !is_numeric($cantidad_semilla) || $cantidad_semilla<0) {
-			echo "<p>cantidad_semilla abono cultivo vacio ó no valido</p>";
+			echo "<center><p>cantidad_semilla abono cultivo vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($cantidad_flor) || !is_numeric($cantidad_flor) || $cantidad_flor<0) {
-			echo "<p>cantidad_flor cultivo vacio ó no valido</p>";
+			echo "<center><p>cantidad_flor cultivo vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($precio_venta) || !is_numeric($precio_venta) || $precio_venta<0) {
-			echo "<p>precio_venta cultivo vacio ó no valido</p>";
+			echo "<center><p>precio_venta cultivo vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if ($error)
 		{
-			echo"<button onclick=location.href='actualizar_planta.php'>Pagina anterior</button>";
+                    ?>
+                        <center><td><input type="button" name="volver" value="Pagina anterior" class="btn btn-success" onclick="window.location.href='actualizar_planta.php'"></td></center>
+                    <?php
 		}else
 		{
 			require('../conexion.php');
@@ -61,9 +63,11 @@
 			$sql="UPDATE planta SET nombre='$nombre', genero='$genero',familia='$familia',tipo_planta='$tipo_planta',cantidad_semilla=$cantidad_semilla,cantidad_flor=$cantidad_flor, precio_venta=$precio_venta WHERE codigo_planta=$codigo_planta";
 
 			if ($link->query($sql) === TRUE) {
-			    echo "<p>Registro actualizado satisfactoriamente</p>";
-			    echo"<p><button onclick=location.href='actualizar_cultivo.php'>Actualice una nuea planta</button></p>";
-			} else {
+			    echo "<center><p>Registro actualizado satisfactoriamente</p></center>";
+                            ?>
+                            <center><td><input type="button" name="volver" value="Actualice una nuea planta" class="btn btn-success" onclick="window.location.href='actualizar_cultivo.php'"></td></center>
+                            <?php
+                        } else {
 			    echo "Error: " . $sql . "<br>" . $link->error;
 			}
 		}
@@ -72,11 +76,12 @@
 	{
 	?>
 	<form method="post" action="actualizar_planta.php">
+		<center>
 		<table>
 			<tr>
 				<td>Codigo planta</td>
 				<td>
-					<select name="codigo_planta">
+					<select class="form-control" name="codigo_planta">
 					<?php
 						require ('../conexion.php');
 						$query= "SELECT * FROM planta WHERE eliminar = 0 ORDER BY codigo_planta";
@@ -89,32 +94,54 @@
 					?>
 					</select>
 				</td>
-			</tr>
-			<tr><td>Nombre:</td>
-				<td><input type="name" name="nombre"></td>
-			</tr>
-			<tr><td>Genero:</td>
-				<td><input type="name" name="genero"></td>
-			</tr>
-				<tr><td>Familia:</td>
-				<td><input type="name" name="familia"></td>
-			</tr>
-				<tr><td>Tipo planta:</td>
-				<td><input type="name" name="tipo_planta"></td>
-			</tr>
-				<tr><td>Cantidad semilla:</td>
-				<td><input type="name" name="cantidad_semilla"></td>
-			</tr>
-			<tr><td>Cantidad flor:</td>
-				<td><input type="number" name="cantidad_flor"></td>
-			</tr>
-			<tr><td>Precio venta:</td>
-				<td><input type="number" name="precio_venta"></td>
-			</tr>
+                        <tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>NOMBRE</label></td>
+                                <td width="50%"><input type="name" name="nombre" class="form-control" placeholder="Nombre"></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>GENERO</label></td>
+                                <td width="50%"><input type="name" name="genero" class="form-control" placeholder="Genero"></td>
+                            </div>
+                        </tr>
+			<tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>FAMILIA</label></td>
+                                <td width="50%"><input type="name" name="familia" class="form-control" placeholder="Familia"></td>
+                            </div>
+                        </tr>
+			<tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>TIPO PLANTA</label></td>
+                                <td width="50%"><input type="name" name="tipo_planta" class="form-control" placeholder="Tipo Planta"></td>
+                            </div>
+                        </tr>	
+			<tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>CANTIDAD SEMILLA</label></td>
+                                <td width="50%"><input type="name" name="cantidad_semilla" class="form-control" placeholder="Cantidad Semilla"></td>
+                            </div>
+                        </tr>	
+			<tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>CANTIDAD FLOR</label></td>
+                                <td width="50%"><input type="number" name="cantidad_flor" class="form-control" placeholder="Cantidad Flor"></td>
+                            </div>
+                        </tr>	
+			<tr>
+                            <div  class="form-group">
+                                <td width="50%"><label>PRECIO VENTA</label></td>
+                                <td width="50%"><input type="number" name="precio_venta" class="form-control" placeholder="Precio Venta"></td>
+                            </div>
+                        </tr>
 		</table>
-		<input type="submit" name="submit" value="Actualizar">
+                    <br>
+		<input class="btn btn-primary" type="submit" name="submit" value="Actualizar">
+                </center>
 	</form>
-	<button onclick=location.href='../Lista/lista_planta.php'>Lista planta</button>
+        <center><td><input type="button" name="volver" value="Lista Planta" class="btn btn-success" onclick="window.location.href='../Lista/lista_planta.php'"></td></center>
 	<?php
 	}
 	?>

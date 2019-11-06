@@ -18,32 +18,34 @@
 		$error=false;
 		/*Validaciones*/
 		if (empty($codigo_empleado)) {
-			echo "<p>codigo_empleado vacio ó no valido.</p>";
+			echo "<center><p>codigo_empleado vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($cedula) || !is_numeric($cedula) || $cedula<0) {
-			echo "<p>Cedula vacio ó no valido.</p>";
+			echo "<center><p>Cedula vacio ó no valido.</p></center>";
 			$error=true;
 		}
 		if (empty($nombre) || is_numeric($nombre)) {
-			echo "<p>Nombre vacio ó no valido</p>";
+			echo "<center><p>Nombre vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($apellido1) || is_numeric($apellido1)) {
-			echo "<p>Apellido vacio ó no valido</p>";
+			echo "<center><p>Apellido vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($apellido2) || is_numeric($apellido2)) {
-			echo "<p>Apellido vacio ó no valido</p>";
+			echo "<center><p>Apellido vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if (empty($telefono) || !is_numeric($telefono) || $telefono<0) {
-			echo "<p>Telefono vacio ó no valido</p>";
+			echo "<center><p>Telefono vacio ó no valido</p></center>";
 			$error=true;
 		}
 		if ($error)
 		{
-			echo"<button onclick=location.href='insertar_empleado.html'>Pagina anterior</button>";
+                    ?>
+                        <center><td><input type="button" name="volver" value="Volver" class="btn btn-primary" onclick="window.location.href='actualizar_empleado.php'"></td></center>
+                    <?php
 		}else
 		{
 			require('../conexion.php');
@@ -51,9 +53,11 @@
 			$sql="UPDATE empleado SET cedula=$cedula, nombre='$nombre', apellido1='$apellido1',apellido2='$apellido2',telefono=$telefono WHERE codigo_empleado=$codigo_empleado ";
 
 			if ($link->query($sql) === TRUE) {
-			    echo "<p>Registro actualizado satisfactoriamente</p>";
-			    echo"<p><button onclick=location.href='actualizar_empleado.php'>Actualice un nuevo empleado</button></p>";
-			    echo"<button onclick=location.href='../Lista/lista_empleado.php'>Lista empleado</button>";
+			    echo "<center><p>Registro actualizado satisfactoriamente</p></center>";
+                            ?>
+                            <center><td><input type="button" name="volver" value="Actualice un nuevo empleado" class="btn btn-primary" onclick="window.location.href='actualizar_empleado.php'"></td></center>
+                            <center><td><input type="button" name="volver" value="Lista empleado" class="btn btn-primary" onclick="window.location.href='../Lista/lista_empleado.php'"></td></center>
+                            <?php
 			} else {
 			    echo "Error: " . $sql . "<br>" . $link->error;
 			}
@@ -63,8 +67,12 @@
 	{
 	?>
 	<form method="post" action="actualizar_empleado.php">
-		<p>Codigo Empleado: 
-			<select name="codigo_empleado">
+            <center>
+                <table>
+                    <tr>
+                        <td>Codigo Empleado </td>
+                        <td>
+			<select class="form-control" name="codigo_empleado">
 			<?php
 				require ('../conexion.php');
 				$query= "SELECT * FROM empleado WHERE eliminar = 0 ORDER BY codigo_empleado";
@@ -76,15 +84,44 @@
 				}
 			?>
 			</select>
-		</p>
-		<p>Cedula: <input type="number" name="cedula"></p>
-		<p>Nombre: <input type="name" name="nombre"></p>
-		<p>Primer Apellido: <input type="name" name="apellido1"></p>
-		<p>Segundo Apellido: <input type="name" name="apellido2"></p>
-		<p>Telefono: <input type="number" name="telefono"></p>
-		<p><input type="submit" name="submit" value="Actualizar" /></p>
+                        </td>
+                        </tr>
+                   <tr>
+                    <div  class="form-group">
+                        <td width="50%">CEDULA</td>
+                        <td width="50%"><input type="number" name="cedula" class="form-control" placeholder="Cedula"></td>
+                    </div>
+                    </tr>
+                    <tr>
+                    <div  class="form-group">
+                        <td width="50%">NOMBRE</td>
+                        <td width="50%"><input type="name" name="nombre" class="form-control" placeholder="Nombre"></td>
+                    </div>
+                    </tr>
+                    <tr>
+                    <div  class="form-group">
+                        <td width="50%">PRIMER APELLIDO</td>
+                        <td width="50%"><input type="name" name="apellido1" class="form-control" placeholder="Primer Apellido"></td>
+                    </div>
+                    </tr>
+                    <tr>
+                    <div  class="form-group">
+                        <td width="50%">SEGUNDO APELLIDO</td>
+                        <td width="50%"><input type="name" name="apellido2" class="form-control" placeholder="Segundo Apellido"></td>
+                    </div>
+                    </tr>
+                    <tr>
+                    <div  class="form-group">
+                        <td width="50%">TELEFONO</td>
+                        <td width="50%"><input type="number" name="telefono" class="form-control" placeholder="Telefono"></td>
+                    </div>
+                    </tr>
+                </table>
+                <br>
+		<p><input class="btn btn-primary" type="submit" name="submit" value="Actualizar" /></p>
+                
 	</form>
-	<p><button onclick=location.href='../Lista/lista_empleado.php'>Lista Empleado</button></p>
+        <center><td><input type="button" name="volver" value="Lista empleado" class="btn btn-success" onclick="window.location.href='../Lista/lista_empleado.php'"></td></center>
 	<?php
 	}
 	?>
