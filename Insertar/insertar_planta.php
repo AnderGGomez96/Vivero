@@ -33,11 +33,11 @@
 			echo "<center><p>Tipo planta vacio ó no valido.</p></center>";
 			$error=true;
 		}
-            if (empty($cantidad_semilla) || !is_numeric($cantidad_semilla)) {
+            if (empty($cantidad_semilla) || !is_numeric($cantidad_semilla) || $cantidad_semilla<0) {
 			echo "<center><p>Cantidad semilla vacio ó no valido.</p></center>";
 			$error=true;
 		}
-            if (empty($precio_venta) || !is_numeric($precio_venta)) {
+            if (empty($precio_venta) || !is_numeric($precio_venta) || $cantidad_semilla<0) {
 			echo "<center><p>Precio venta vacio ó no valido.</p></center>";
 			$error=true;
 		}

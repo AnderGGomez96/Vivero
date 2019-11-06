@@ -33,7 +33,20 @@
                 <tr>
                     <div class="form-group">
                         <td width="50%"><label>CODIGO PLANTA</label></td>
-                        <td width="50%"><input type="number" name="codigo_empleado" class="form-control" id="exampleInputEmail1" placeholder="Codigo Empleado"></td>
+                        <td>
+                        <select class="form-control" name="codigo_planta">
+                        <?php
+                            require ('../conexion.php');
+                            $query= "SELECT * FROM planta WHERE eliminar = 0 ORDER BY codigo_planta";
+                            $resultado= mysqli_query($link,$query);
+
+                            while($extraido= mysqli_fetch_array($resultado))
+                            {
+                                echo "<option value='$extraido[codigo_planta]'>$extraido[codigo_planta]</option>";
+                            }
+                        ?>
+                        </select>
+                    </td>
                     </div>
                 </tr>
                 <tr>

@@ -113,7 +113,7 @@
 						<select class="form-control" name="codigo_cultivo">
 						<?php
 							require ('../conexion.php');
-							$query= "SELECT * FROM cultivo WHERE termino = 0 ORDER BY codigo_cultivo";
+							$query= "SELECT * FROM cultivo WHERE muerte=0 AND termino = 0 ORDER BY codigo_cultivo";
 							$resultado= mysqli_query($link,$query);
 
 							while($extraido= mysqli_fetch_array($resultado))

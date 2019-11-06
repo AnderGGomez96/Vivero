@@ -24,31 +24,23 @@
 		echo "<center><p>Codigo planta vacio ó no valido</p></center>";
 		$error=true;
 	}
-	if (empty($cantCultivo) || !is_numeric($cantCultivo)) {
+	if (empty($cantCultivo) || !is_numeric($cantCultivo) || $cantCultivo<0) {
 		echo "<center><p>Cantidad de cultivo vacio ó no valido</p></center>";
 		$error=true;
 	}
-	if (empty($humCultivo) || !is_numeric($humCultivo)) {
+	if (empty($humCultivo) || !is_numeric($humCultivo) || $humCultivo<0) {
 		echo "<center><p>Humedad cultivo vacio ó no valido</p></center>";
 		$error=true;
 	}
-        if (empty($edadCultivo) || !is_numeric($edadCultivo)) {
+        if (empty($edadCultivo) || !is_numeric($edadCultivo) || $edadCultivo<0) {
 		echo "<center><p>Edad cultivo vacio ó no valido</p></center>";
 		$error=true;
 	}
-        if (empty($humCultivo) || !is_numeric($humCultivo)) {
-		echo "<center><p>Humedad cultivo vacio ó no valido</p></center>";
-		$error=true;
-	}
-        if (empty($edadCultivo) || !is_numeric($edadCultivo)) {
-		echo "<center><p>Edad de cultivo vacio ó no valido</p></center>";
-		$error=true;
-	}
-        if (empty($diasAbono) || !is_numeric($diasAbono)) {
+        if (empty($diasAbono) || !is_numeric($diasAbono) || $diasAbono<0) {
 		echo "<center><p>Dias de abono vacio ó no valido</p></center>";
 		$error=true;
 	}
-        if (empty($crecimiento) || !is_numeric($crecimiento)) {
+        if (empty($crecimiento) || !is_numeric($crecimiento) || $crecimiento<0) {
 		echo "<center><p>crecimiento cultivo"
             ." vacio ó no valido</p>";
 		$error=true;

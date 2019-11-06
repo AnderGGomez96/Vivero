@@ -14,7 +14,7 @@
 	$telefono=$_POST["telefono"];
 	$error=false;
 /*Validaciones*/
-	if (empty($cedula) || !is_numeric($cedula)) {
+	if (empty($cedula) || !is_numeric($cedula) || $cedula<=0) {
 		echo "<center><p>Cedula vacio ó no valido.</p></center>";
 		$error=true;
 	}
@@ -30,7 +30,7 @@
 		echo "<center><p>Apellido vacio ó no valido</p></center>";
 		$error=true;
 	}
-	if (empty($telefono) || !is_numeric($telefono)) {
+	if (empty($telefono) || !is_numeric($telefono) || $telefono<=0) {
 		echo "<center><p>Telefono vacio ó no valido</p></center>";
 		$error=true;
 	}
