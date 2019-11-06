@@ -106,13 +106,13 @@
                 <tr>
                     <div  class="form-group">
                         <td width="50%"><label>CANTIDAD SEMILLA</label></td>
-                        <td width="50%"><input type="number" name="cantidad_semilla" class="form-control" placeholder="CANTIDAD SEMILLA"></td>
+                        <td width="50%"><input min="0" type="number" name="cantidad_semilla" class="form-control" placeholder="CANTIDAD SEMILLA"></td>
                     </div>
                 </tr>
                 <tr>
                     <div  class="form-group">
                         <td width="50%"><label>PRECIO VENTA</label></td>
-                        <td width="50%"><input type="number" name="precio_venta" class="form-control" placeholder="PRECIO DE LA VENTA"></td>
+                        <td width="50%"><input min="0" type="number" name="precio_venta" class="form-control" placeholder="PRECIO DE LA VENTA"></td>
                     </div>
                 </tr>
                 </table>
