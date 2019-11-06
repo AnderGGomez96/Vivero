@@ -51,12 +51,6 @@
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <td width="50%"><label>HUMEDAD PLANTA</label></td>
-                        <td width="50%"><input min="0" type="number" name="codigo_planta" class="form-control" id="exampleInputEmail1" placeholder="Humedad Planta"></td>
-                    </div>
-                </tr>
-                <tr>
-                    <div class="form-group">
                         <td width="50%"><label>CANTIDAD CULTIVO</label></td>
                         <td width="50%"><input min="0" type="number" name="cantidad_cultivo"class="form-control" id="exampleInputEmail1" placeholder="Cantidad Cultivo"></td>
                     </div>
