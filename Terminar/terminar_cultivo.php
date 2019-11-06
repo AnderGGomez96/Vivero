@@ -38,8 +38,11 @@
 					$sql="UPDATE cultivo SET termino=$terminar WHERE codigo_cultivo=$codigo_cultivo";
 					if ($link->query($sql) === TRUE)
 				    {
-				    	echo"<p><button onclick=location.href='terminar_cultivo.php'>Termine un nuevo cultivo</button></p>";
-					} else {
+                                            ?>
+                                <br>
+                                        <center><td><input type="button" name="volver" value="Termine un nuevo cultivo" class="btn btn-success" onclick="window.location.href='terminar_cultivo.php'"></td></center>
+					<?php
+                                        } else {
 					    echo "Error: " . $sql . "<br>" . $link->error;
 					}
 				}else
@@ -85,8 +88,8 @@
 							}
 						?>
 				</table>
-				       <form method="post" action="terminar_cultivo.php">
-	                    
+		<form method="post" action="terminar_cultivo.php">
+                    <center><label> 
 	                    <tr><td>Codigo cultivo: </td>
 	                        
 	                        <td><select class="form-control" name="codigo_cultivo">
@@ -108,6 +111,7 @@
 	                        	<option value=0>No</option>
 	                        </select></td></tr>
 	                        <p><input class="btn btn-primary" type="submit" name="submit" value="Terminar" /></p>
+                        </label></center>
 	                </form>
 	                <center><td><input type="button" name="volver" value="Lista cultivo" class="btn btn-success" onclick="window.location.href='../Lista/lista_cultivo.php'"></td></center>
 			</div>
