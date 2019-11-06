@@ -10,7 +10,7 @@
 	<body>
 		<div>
 			<table align="center">
-				<h1 align="center">Vivero</h1>
+				<h1 align="center">Vivero roślina</h1>
 				<BR>
                                  <br>
                                   <br>
