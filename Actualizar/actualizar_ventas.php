@@ -101,7 +101,7 @@
                                 <td width="50%"><input type="name" name="nombre" class="form-control" placeholder="Nombre Cliente"></td>
                             </div>
                         </tr>
-				<tr><td>CODIGO PLANTA</td>
+				<tr><td>NOMBRE PLANTA</td>
 				<td>
 					<select class="form-control" name="codigo_planta">
 					<?php
@@ -111,7 +111,7 @@
 
 						while($extraido= mysqli_fetch_array($resultado))
 						{
-							echo "<option value='$extraido[codigo_planta]'>$extraido[codigo_planta]</option>";
+							echo "<option value='$extraido[codigo_planta]'>$extraido[nombre]</option>";
 						}
 					?>
 					</select>

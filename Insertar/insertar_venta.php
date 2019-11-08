@@ -101,20 +101,20 @@
                             </tr>                   
                             <tr>
                                 <div  class="form-group">
-                                    <td width="50%"><label>CODIGO PLANTA</label></td>
+                                    <td width="50%"><label>NOMBRE PLANTA</label></td>
                                 </div>
                             </tr>
                         </table>
                         <td><select class="form-control" name="codPlanta">
                             <?php    
                                 require('../conexion.php');
-                                $query= "SELECT `codigo_planta`"
+                                $query= "SELECT *"
                                         ." FROM `planta` WHERE `eliminar` = 0 "
                                         ." ORDER BY `codigo_planta`";
                                 $resultado= mysqli_query($link,$query);
                                 while($extraido= mysqli_fetch_array($resultado))
                                 {
-                                    echo "<option value='$extraido[codigo_planta]'>$extraido[codigo_planta]</option>";
+                                    echo "<option value='$extraido[codigo_planta]'>$extraido[nombre]</option>";
                                 }
                             ?>
                         </select></td></tr>

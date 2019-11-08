@@ -70,7 +70,7 @@
 					</select>
 				</td>
 			</tr>
-			<tr><td>Codigo empleado:</td>
+			<tr><td>Nombre empleado:</td>
 				<td>
 					<select class="form-control" name="codigo_empleado">
 					<?php
@@ -80,13 +80,13 @@
 
 						while($extraido= mysqli_fetch_array($resultado))
 						{
-							echo "<option value='$extraido[codigo_empleado]'>$extraido[codigo_empleado]</option>";
+							echo "<option value='$extraido[codigo_empleado]'>$extraido[nombre]</option>";
 						}
 					?>
 					</select>
 				</td>
 			</tr>
-			<tr><td>Codigo labor:</td>
+			<tr><td>Nombre labor:</td>
 				<td>
 					<select class="form-control" name="codigo_labor">
 					<?php
@@ -96,7 +96,7 @@
 
 						while($extraido= mysqli_fetch_array($resultado))
 						{
-							echo "<option value='$extraido[codigo_labor]'>$extraido[codigo_labor]</option>";
+							echo "<option value='$extraido[codigo_labor]'>$extraido[nombre]</option>";
 						}
 					?>
 					</select>

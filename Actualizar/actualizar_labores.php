@@ -50,7 +50,7 @@
 		<center>
 		<table>
 			<tr>
-				<td>Codigo labor</td>
+				<td>Nombre labor</td>
 				<td>
 					<select class="form-control" name="codigo_labor">
 					<?php
@@ -60,14 +60,14 @@
 
 						while($extraido= mysqli_fetch_array($resultado))
 						{
-							echo "<option value='$extraido[codigo_labor]'>$extraido[codigo_labor]</option>";
+							echo "<option value='$extraido[codigo_labor]'>$extraido[nombre]</option>";
 						}
 					?>
 					</select>
 				</td>
                                 <tr>
                     <div class="form-group">
-                        <td width="50%"><label>NOMBRE</label></td>
+                        <td width="50%"><label>Nuevo nombre</label></td>
                         <td width="50%"><input type="name" name="nombre" class="form-control" placeholder="NOMBRE"></td>
                     </div>
                 </tr>

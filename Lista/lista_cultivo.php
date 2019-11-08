@@ -8,38 +8,38 @@
 	<body>
 
 
-		<div>
-                    <table align="center" class="table">
-                        <thead class="thead-dark">
+		
+                    <div>
+                    <table  align = " center "  class = " table ">
+                        <thead  class = " thead-dark ">
                             <tr>
-               					<th  class = " thead-dark "  scope = " col " > <centro > Codigo cultivo </center > </th >
-                                <th  class = " thead-dark "  scope = " col " > <centro > Codigo Empleado </center > </th >
-                                <th  class = " thead-dark "  scope = " col " > <centro > Codigo Planta </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Codigo cultivo </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Nombre Empleado </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Nombre Planta </center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <center > Cantidad Cultivo </center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <centro > Humedad Cultivo (%)</center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <centro > Edad Cultivo (dias)</center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <center > Dias abono </center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <centro > Crecimiento (mm) </center > </th >
-                            </tr>
-                            </thead>
+                            </tr >
+                            </thead >
 					<?php
-
-						require('../conexion.php');
-						$query="SELECT * FROM cultivo WHERE muerte = 0 ORDER BY codigo_cultivo";
-						$resultado=mysqli_query($link,$query);
-
-						while ($extraido= mysqli_fetch_array($resultado)) {
-							echo "<tr align='center'><td>".$extraido['codigo_cultivo']."</td>";
-							echo "<td>".$extraido['codigo_empleado']."</td>";
-							echo "<td>".$extraido['codigo_planta']."</td>";
-							echo "<td>".$extraido['cantidad_cultivo']."</td>";
-							echo "<td>".$extraido['humedad_cultivo']."</td>";
-							echo "<td>".$extraido['edad_cultivo']."</td>";
-							echo "<td>".$extraido['dias_abono']."</td>";
-							echo "<td>".$extraido['crecimiento']."</td>";
+						require ( '../conexion.php' );
+						$query="SELECT codigo_cultivo, empleado.nombre, planta.nombre,cantidad_cultivo,humedad_cultivo,edad_cultivo,dias_abono,crecimiento FROM cultivo INNER JOIN empleado ON cultivo.codigo_empleado = empleado.codigo_empleado INNER JOIN planta ON cultivo.codigo_planta = planta.codigo_planta WHERE (muerte = 0 AND termino = 0)";
+						$resultado = mysqli_query($link,$query);
+						while ( $extraido =  mysqli_fetch_array ( $resultado )) {
+							echo  " <tr align = 'center'> <td> " . $extraido [ 0 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 1 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 2 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 3 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 4 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 5 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 6 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 7 ] . " </td> " ;
 						}
 					?>
-			</table>
+			</table >
+		
                     <center> <table align="center">
 				<BR>
 				<tr>

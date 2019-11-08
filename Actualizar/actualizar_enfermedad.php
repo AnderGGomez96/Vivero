@@ -54,7 +54,7 @@
             <center>
 		<table>
 			<tr>
-				<td>Codigo enfermedad</td>
+				<td>Nombre enfermedad</td>
 				<td>
 					<select class="form-control" name="codigo_enfermedad">
 					<?php
@@ -64,14 +64,14 @@
 
 						while($extraido= mysqli_fetch_array($resultado))
 						{
-							echo "<option value='$extraido[codigo_enfermedad]'>$extraido[codigo_enfermedad]</option>";
+							echo "<option value='$extraido[codigo_enfermedad]'>$extraido[nombre_enfermedad]</option>";
 						}
 					?>
 					</select>
 				</td>
 			</tr>
                                 </tr>
-					<tr><td>Nombre enfermedad  </td>
+					<tr><td>Nuevo nombre enfermedad  </td>
 					<td><input class="form-control" type="name" name="nombre_enfermedad"></td>
 				</tr>
                                 </tr>

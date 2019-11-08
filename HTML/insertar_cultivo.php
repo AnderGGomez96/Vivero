@@ -13,7 +13,7 @@
             <table>
                 <tr>
                     <div class="form-group">
-                        <td width="50%"><label>CODIGO EMPLEADO</label></td>
+                        <td width="50%"><label>NOMBRE EMPLEADO</label></td>
                         <td>
                             <select class="form-control" name="codigo_empleado">
                             <?php
@@ -23,7 +23,7 @@
 
                                 while($extraido= mysqli_fetch_array($resultado))
                                 {
-                                    echo "<option value='$extraido[codigo_empleado]'>$extraido[codigo_empleado]</option>";
+                                    echo "<option value='$extraido[codigo_empleado]'>$extraido[nombre]</option>";
                                 }
                             ?>
                             </select>
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <td width="50%"><label>CODIGO PLANTA</label></td>
+                        <td width="50%"><label>NOMBRE PLANTA</label></td>
                         <td>
                         <select class="form-control" name="codigo_planta">
                         <?php
@@ -42,7 +42,7 @@
 
                             while($extraido= mysqli_fetch_array($resultado))
                             {
-                                echo "<option value='$extraido[codigo_planta]'>$extraido[codigo_planta]</option>";
+                                echo "<option value='$extraido[codigo_planta]'>$extraido[nombre]</option>";
                             }
                         ?>
                         </select>
@@ -57,13 +57,13 @@
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <td width="50%"><label>HUMEDAD CULTIVO</label></td>
+                        <td width="50%"><label>HUMEDAD CULTIVO (%)</label></td>
                         <td width="50%"><input min="0" type="number" name="humedad_cultivo" class="form-control" id="exampleInputEmail1" placeholder="Humedad Cultivo"></td>
                     </div>
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <td width="50%"><label>EDAD CULTIVO</label></td>
+                        <td width="50%"><label>EDAD CULTIVO (dias)</label></td>
                         <td width="50%"><input min="0" type="number" name="edad_cultivo" class="form-control" id="exampleInputEmail1" placeholder="Edad Cultivo"></td>
                     </div>
                 </tr>
@@ -75,7 +75,7 @@
                 </tr>
                 <tr>
                     <div class="form-group">
-                        <td width="50%"><label>CRECIMIENTO</label></td>
+                        <td width="50%"><label>CRECIMIENTO (mm)</label></td>
                         <td width="50%"><input min="0" type="number" name="crecimiento" class="form-control" id="exampleInputEmail1" placeholder="Crecimiento"></td>
                     </div>
                 </tr>

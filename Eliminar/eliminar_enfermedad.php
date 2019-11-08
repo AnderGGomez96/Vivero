@@ -58,16 +58,16 @@
 			</table>
             <form method="post" action="eliminar_enfermedad.php">
                 <center><label>
-                <tr><td>Codigo enfermedad: </td>
+                <tr><td>Nombre enfermedad: </td>
                     <td><select class="form-control" name="codEnfermedad">
                     <?php
 			require ('../conexion.php');
-			$query= "SELECT `codigo_enfermedad` FROM `enfermedad` "
+			$query= "SELECT * FROM `enfermedad` "
                                 . "WHERE `eliminar`= 0 ORDER BY `codigo_enfermedad`";
 			$resultado= mysqli_query($link,$query);
                         while($extraido= mysqli_fetch_array($resultado))
 			{
-                            echo "<option value='$extraido[codigo_enfermedad]'>$extraido[codigo_enfermedad]</option>";
+                            echo "<option value='$extraido[codigo_enfermedad]'>$extraido[nombre_enfermedad]</option>";
 			}
                     ?>
 		</select></td></tr>

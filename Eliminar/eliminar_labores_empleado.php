@@ -30,20 +30,20 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th class="thead-dark" scope="col"><center>CODIGO LABOR EMPLEADO</center></th>
-                                        <th class="thead-dark" scope="col"><center>CODIGO EMPLEADO</center></th>
-                                        <th class="thead-dark" scope="col"><center>CODIGO LABOR</center></th>
+                                        <th class="thead-dark" scope="col"><center>Nombre EMPLEADO</center></th>
+                                        <th class="thead-dark" scope="col"><center>Nombre LABOR</center></th>
                                     </tr>
                                     </thead>
 
 					<?php
 						require('../conexion.php');
 						//$query="SELECT * FROM labores_empleados WHERE eliminar = 0 ORDER BY codigo_labor_empleado";
-						$query="SELECT * FROM labores_empleados WHERE codigo_empleado IN (SELECT codigo_empleado FROM empleado WHERE eliminar = 0) AND eliminar =0";
+						$query="SELECT codigo_labor_empleado,empleado.nombre,labores.nombre FROM labores_empleados INNER JOIN empleado ON labores_empleados.codigo_empleado=empleado.codigo_empleado INNER JOIN labores ON labores_empleados.codigo_labor=labores.codigo_labor WHERE (empleado.eliminar=0 AND labores.eliminar=0)";
 						$resultado=mysqli_query($link,$query);
 						while ($extraido= mysqli_fetch_array($resultado)) {
-							echo "<tr align='center'><td>".$extraido['codigo_labor_empleado']."</td>";
-							echo "<td>".$extraido['codigo_empleado']."</td>";
-							echo "<td>".$extraido['codigo_labor']."</td></tr>";
+							echo "<tr align='center'><td>".$extraido[0]."</td>";
+							echo "<td>".$extraido[1]."</td>";
+							echo "<td>".$extraido[2]."</td></tr>";
 						}
 					?>
 			</table>

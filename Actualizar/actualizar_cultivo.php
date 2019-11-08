@@ -109,8 +109,8 @@
                         <thead  class = " thead-dark ">
                             <tr>
                                 <th  class = " thead-dark "  scope = " col " > <centro > Codigo cultivo </center > </th >
-                                <th  class = " thead-dark "  scope = " col " > <centro > Codigo Empleado </center > </th >
-                                <th  class = " thead-dark "  scope = " col " > <centro > Codigo Planta </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Nombre Empleado </center > </th >
+                                <th  class = " thead-dark "  scope = " col " > <centro > Nombre Planta </center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <center > Cantidad Cultivo </center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <centro > Humedad Cultivo (%)</center > </th >
                                 <th  class = " thead-dark "  scope = " col " > <centro > Edad Cultivo (dias)</center > </th >
@@ -120,17 +120,17 @@
                             </thead >
 					<?php
 						require ( '../conexion.php' );
-						$query = "SELECT * FROM cultivo WHERE (muerte = 0  AND termino = 0 ) ORDER BY codigo_cultivo " ;
+						$query="SELECT codigo_cultivo, empleado.nombre, planta.nombre,cantidad_cultivo,humedad_cultivo,edad_cultivo,dias_abono,crecimiento FROM cultivo INNER JOIN empleado ON cultivo.codigo_empleado = empleado.codigo_empleado INNER JOIN planta ON cultivo.codigo_planta = planta.codigo_planta WHERE (muerte = 0 AND termino = 0)";
 						$resultado = mysqli_query($link,$query);
 						while ( $extraido =  mysqli_fetch_array ( $resultado )) {
-							echo  " <tr align = 'center'> <td> " . $extraido [ 'codigo_cultivo' ] . " </td> " ;
-							echo  " <td> " . $extraido [ 'codigo_empleado' ] . " </td> " ;
-							echo  " <td> " . $extraido [ 'codigo_planta' ] . " </td> " ;
-							echo  " <td> " . $extraido [ 'cantidad_cultivo' ] . " </td> " ;
-							echo  " <td> " . $extraido [ 'humedad_cultivo' ] . " </td> " ;
-							echo  " <td> " . $extraido [ 'edad_cultivo' ] . " </td> " ;
-							echo  " <td> " . $extraido [ 'dias_abono' ] . " </td> " ;
-							echo  " <td> " . $extraido [ 'crecimiento' ] . " </td> " ;
+							echo  " <tr align = 'center'> <td> " . $extraido [ 0 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 1 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 2 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 3 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 4 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 5 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 6 ] . " </td> " ;
+							echo  " <td> " . $extraido [ 7 ] . " </td> " ;
 						}
 					?>
 			</table >
@@ -155,7 +155,7 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td>Codigo empleado: </td>
+				<tr><td>Nombre empleado: </td>
 					<td>
 						<select class="form-control" name="codigo_empleado">
 						<?php
@@ -165,13 +165,13 @@
 
 							while($extraido= mysqli_fetch_array($resultado))
 							{
-								echo "<option value='$extraido[codigo_empleado]'>$extraido[codigo_empleado]</option>";
+								echo "<option value='$extraido[codigo_empleado]'>$extraido[nombre]</option>";
 							}
 						?>
 						</select>
 					</td>
 				</tr>
-				<tr><td>Codigo planta: </td>
+				<tr><td>Nombre planta: </td>
 					<td>
 						<select class="form-control" name="codigo_planta">
 						<?php
@@ -181,7 +181,7 @@
 
 							while($extraido= mysqli_fetch_array($resultado))
 							{
-								echo "<option value='$extraido[codigo_planta]'>$extraido[codigo_planta]</option>";
+								echo "<option value='$extraido[codigo_planta]'>$extraido[nombre]</option>";
 							}
 						?>
 						</select>
@@ -204,8 +204,8 @@
 				</tr>
 				<tr><td>Muerte: </td>
 					<td><select class="form-control" name="muerte">
-						<option value=2>0</option>
-						<option value=1>1</option>
+						<option value=2>No</option>
+						<option value=1>Sí</option>
 					</select></td>
 				</tr>
 			</table>

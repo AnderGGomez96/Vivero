@@ -11,20 +11,17 @@
                             <tr>
                                 <th class="thead-dark" scope="col"><center>Codigo Infeccion</center></th>
                                 <th class="thead-dark" scope="col"><center>Codigo Cultivo</center></th>
-                                <th class="thead-dark" scope="col"><center>Codigo Enfermedad</center></th>
+                                <th class="thead-dark" scope="col"><center>Nombre Enfermedad</center></th>
                             </tr>
                             </thead>
 					<?php
 						require('../conexion.php');
-						$query="SELECT * FROM infeccion WHERE `codigo_cultivo`"
-                                                        . " IN (SELECT `codigo_cultivo` FROM cultivo"
-                                                        . " WHERE (`muerte` = 0 AND `termino`=0)"
-                                                        . " ORDER BY `codigo_cultivo`) AND `eliminar`=0";
+						$query="SELECT codigo_infeccion, codigo_cultivo, enfermedad.nombre_enfermedad FROM infeccion INNER JOIN enfermedad ON infeccion.codigo_enfermedad = enfermedad.codigo_enfermedad WHERE (infeccion.eliminar=0 AND enfermedad.eliminar=0)";
 						$resultado=mysqli_query($link,$query);
 						while ($extraido= mysqli_fetch_array($resultado)) {
-							echo "<tr align='center'><td>".$extraido['codigo_infeccion']."</td>";
-							echo "<td>".$extraido['codigo_cultivo']."</td>";
-							echo "<td>".$extraido['codigo_enfermedad']."</td></tr>";
+							echo "<tr align='center'><td>".$extraido[0]."</td>";
+							echo "<td>".$extraido[1]."</td>";
+							echo "<td>".$extraido[2]."</td></tr>";
 						}
 					?>
                     </table>
