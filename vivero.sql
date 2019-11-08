@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 06-11-2019 a las 05:23:21
+-- Tiempo de generación: 08-11-2019 a las 02:51:36
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.2.18
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `vivero`
 --
+CREATE DATABASE IF NOT EXISTS `vivero` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `vivero`;
 
 -- --------------------------------------------------------
 
@@ -41,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `cultivo` (
   `muerte` int(11) NOT NULL DEFAULT '0',
   `termino` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo_cultivo`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cultivo`
@@ -52,7 +54,8 @@ INSERT INTO `cultivo` (`codigo_cultivo`, `codigo_empleado`, `codigo_planta`, `ca
 (2, 4, 7, 4, 1, 1, 1, 1, 0, 0),
 (3, 7, 10, 8, 2, 1, 4, 5, 0, 0),
 (4, 5, 8, 8, 11, 6, 1, 12, 0, 0),
-(5, 8, 5, 10, 3, 1, 1, 1, 0, 0);
+(5, 8, 5, 10, 3, 1, 1, 1, 0, 0),
+(6, 3, 11, 7, 2, 1, 2, 3, 0, 0);
 
 -- --------------------------------------------------------
 
